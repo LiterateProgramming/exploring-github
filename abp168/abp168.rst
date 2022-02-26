@@ -13,7 +13,6 @@ Contents:
    conf.py
    codechat_config.yaml
    shadows_of_knight_ep1.py
-   sam1123_codechat_intro.py
 
 Notes on use with the CodeChat System
 -------------------------------------
