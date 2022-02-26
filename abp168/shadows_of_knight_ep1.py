@@ -65,7 +65,7 @@ min_w = 0
 max_w = w - 1
 min_h = 0
 max_h = h - 1
-# game loop
+# game loop 
 while True:
     bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
 
