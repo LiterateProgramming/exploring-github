@@ -9,4 +9,4 @@ Feedback
 
     Before you turn in an assignment, ensure that there are no errors when rendering. I fixed this using a hidden toctree -- see `index`.
 #.  Your `index` file should be edited to provide useful text, not just the template contents.
-#.  Now that you have a partner, please resubmit with feedback on your partner's code.
+#.  Now that you have a partner, please resubmit with feedback on your partner's code
