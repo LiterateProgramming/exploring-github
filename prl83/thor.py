@@ -49,16 +49,16 @@
 #
 # The first two lines import libraries that you need.
 #
-# The third line uses the split() method to parse input from the game. You can read more about ``split`` `here <https://www.tutorialspoint.com/python3/string_split.htm>`_. Basically the game starts you with a string like "3 8 3 6" and this line takes that string and sets the light position variables to (3,8) and Thor's initial position to (3,6).
+# The third line uses the ``split()`` method to parse input from the game. You can read more about ``split`` `here <https://www.tutorialspoint.com/python3/string_split.htm>`_. Basically the game starts you with a string like "3 8 3 6" and this line takes that string and sets the light position variables to (3,8) and Thor's initial position to (3,6).
 #
-# Then there's an infinite while loop. Whatever you want Thor to do each turn, you put it in the loop.
+# Then there's an infinite ``while`` loop. Whatever you want Thor to do each turn, you put it in the loop.
 #
 # The final line keeps track of how many turns you have left.
 #
 # What should I do first?
 # =======================
 #
-# Start outside the while loop and set Thor's current position to his initial position like this:
+# Start outside the ``while`` loop and set Thor's current position to his initial position like this:
 #
 # .. image:: initial.png
 #   :width: 50%
@@ -66,7 +66,7 @@
 # Then what?
 # ==========
 #
-# Each turn, compare Thor's *current* position to the light's position. Figure out which direction he needs to go and ``print`` it. Then don't forget to update thor_x to reflect where you moved him. Like this:
+# Each turn, compare Thor's *current* position to the light's position. Figure out which direction he needs to go and ``print`` it. Then don't forget to update ``thor_x`` to reflect where you moved him. Like this:
 #
 # .. image:: first_step.png
 #   :width: 50%
@@ -78,6 +78,15 @@
 #
 # .. image:: sketch.png
 #   :width: 100%
+# 
+# |
+# | 1. I drew a map of the game grid and labeled the corners
+# | 2. I put Thor at (20, 10), near the center of the map.
+# | 3. Then for each of the eight possible directions, I wrote out some hypothetical coordinates. 
+# | E.g. if the light was directly to the east, then its x-coordinate would be higher than Thor's, but the y-coordinate would be the same, for example (25, 10)
+# | 4. I then wrote out the checks needed for each direction.
+# | E.g. if ``thor_x`` ("tx" in the sketch) is ``< light_x``, then he needs to go east
+# | 5. Finally, I figured out how Thor's position would need to update after he'd moved in that direction. For east, it would be ``thor_x += 1``
 #
 # Wait, what if I want him to move a different direction besides NE?
 # ==================================================================
