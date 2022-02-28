@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 **********************
-Sam McDevitt's Code
+Introduction to Sphinx
 **********************
 
 Contents:
@@ -13,25 +13,14 @@ Contents:
     :maxdepth: 2
 
     sam1123_codechat_intro.py
-    shadows_of_knight_ep1.py
 
-# .. note::
 
-#   The problem and solution for the game are explained.
+.. toctree::
+    :hidden:
 
-#
+    conf.py
+    codechat_config.yaml
 
-#   Images can be hard to read in the codechat window. Might want to try to use a pen or a computer graphic.
-
-#
-
-#   Variable names arent descriptive, but there are comments included whith each variable to explain what it is and how the name came about.
-
-#
-
-#   Solution passes all test cases sucessfully
-
-#
 
 Notes on use with the CodeChat System
 -------------------------------------
