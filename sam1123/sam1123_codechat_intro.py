@@ -1,7 +1,18 @@
-# *******************************************
-# Coding with Reflection - Death-First Search
-# *******************************************
+# *****************************************************
+# Coding with Reflection - Death-First Search (sam1123)
+# *****************************************************
 # Solving the the `death-first-search puzzle <https://www.codingame.com/ide/puzzle/death-first-search-episode-1>`_ from codingame
+#
+# .. note::
+#   Overall, there could be more of an explanation of what the problem statement is for this game. 
+#   Without having knowledge of the problem, the reader could easily get lost on the solution since they don't know why the solution is needed.
+#
+#   The images provided a clear and explanitory and the code contains comments dispearsed throughout.
+#
+#   The variable names could be more descriptive or have comments explaining the variables usage for the reader. 
+#
+#   Solution passes all test cases sucessfully
+#
 
 # ^^^^^^^^^^^^^^^
 # Solution Method
@@ -18,6 +29,14 @@
 # =====================
 # 
 # This section imports libraries and initalizes variables used in the solution below. 
+#
+# .. note::
+#   Should comment what the initilzed variables ``node_order``, ``links``, ``exits``, and ``d`` are used for in this solution
+#
+# Node_order stores the nodes as they are read in from the program
+# links stores the links to those nodes as they are read in
+# exits stores which nodes are exits. 
+# d is a dictionary to store the nodes with there links. 
 import sys
 import math
 
@@ -39,9 +58,12 @@ d = {}
 # 
 # e: the number of exit gateways
 #
+# .. note::
+#   Can include information on what to expect as input and how it is formatted in the problem
+#
 # This section parses in the input data it keeps the connections of the graph sorted into a list
 # 
-# 
+# The input is given as links to the nodes. 
 #  
 n, l, e = [int(i) for i in input().split()]
 for i in range(l):
@@ -60,7 +82,10 @@ for i in range(l):
     else:
         d[n1]=[n2]
         d[n2]=[n1]
-        
+# 
+# .. note:: 
+#   Useful debug print out below
+#   
 # an example debug message for the system
     #print("Debug messages " + str(d), file=sys.stderr, flush=True)
 
@@ -84,7 +109,10 @@ while True:
     neighbor= False
 
 # The solution below closes the path to the exit node if it is directly adjacent, or randomly closes a different path if there isnt an exit node adjacent. 
-
+#
+# .. note::
+#   An explanation of the key/value stucture for dictionary ``d`` would be helpful for the reader to know how you're closing paths through a dictionary
+#
     for exit_node in exits:
 
         if exit_node in d[si]:
