@@ -7,19 +7,30 @@ Use this link to access the coding game https://www.codingame.com/ide/puzzle/pow
 **Instructions:
 Write a program that will guide Thor to reach the light of power in the most efficient manner.**
 
+
 */
 /* *Note: You can utilize any coding language that you are most comfortable with to write this code by changing this option in the code tab. I chose to use C++* */
-
+//
+// .. note::
+//  
+//  should give file "cpp" extension as visual studio code and other editors pick it up as C
+//
+//
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
+//
 
 /*
 **This line of code will be given to you**
 */
+// .. note::
+//  
+//  Confused about which line(s) of code are being referred to
+
 int main()
 {
     int light_x; // the X position of the light of power
@@ -35,10 +46,16 @@ int main()
 /*
 This a diagram of Thor at his starting position
 
-.. image:: ThorPWR.jpg
+.. image:: InkedThorDiagram.jpg
 
+.. note::
+  Nice picture, and labeling!
 
 Discription/Directions: The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of thor as he moves within the bondary conditions. Remember the objective is to get thor to move towards the light of power. The directions you will be using will be N(North), NE(North East), E(East), SE(South East), S(South), SW(South West), W (West), or NW(North West).
+*/
+/*
+.. note::
+  Minor typos.
 */
 /* 
 **Test case 1 & 2:**
@@ -55,7 +72,9 @@ The final test case (Optimal angle) utilizing everything implemented before whil
 */
 /* *Note: In order to loop each of the test cases to work all at the same time you have to use an if statement so that you can input more than one direction for each time that Thor moves. You will notice that as you play each testcase. Your conditions are created by making the light of power position X or Y (light_x/light_y) greater than or less than the positon of Thor(initial_tx/initial_ty) in the X or Y.*
 */
-
+// .. note::
+//  
+//  I think it would be better to code a solution independent of the test cases that will move Thor to the light from any position on the map.
         // **this is the fourth test case...**
         if((light_y > initial_ty) && (light_x > initial_tx))
         
@@ -84,5 +103,12 @@ The final test case (Optimal angle) utilizing everything implemented before whil
         // **Don't forget to include the "else{}" statment at the end.**
         else{};
     }
+// .. note::
+//  
+//  Should use new variable names instead of initial_tx and initial_ty, also whatever variable name is used for Thor's position, it should be updated each time he moves.
 }
 // **Now you can press "PLAY ALL TESTCASES"**
+//
+// .. note::
+//  
+//  I was able to successfully pass all the visible test cases simply by pasting this code in. However it fails the additional test cases when the code is submitted.
