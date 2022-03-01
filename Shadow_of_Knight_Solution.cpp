@@ -41,11 +41,14 @@ using namespace std;
 // The provided code for the game, these functions and variables have been set up to hand the user the required information from the game to be able to create the solution.
 int main()
 {
-    int w; // width of the building.
-    int h; // height of the building.
+    // The following variables are one time inputs for the game. h and w determine the height and width of the building that Batman is scaling respectively.
+    int w; 
+    int h; 
     cin >> w >> h; cin.ignore();
-    int n; // maximum number of turns before game over.
+    // n is the maximum number of turns before game over. (we use this very little)
+    int n; 
     cin >> n; cin.ignore();
+    // x0 and y0 represent the initial coordinates of Batman.
     int x0;
     int y0;
     cin >> x0 >> y0; cin.ignore();
@@ -53,14 +56,15 @@ int main()
     
 // My Code
 // -------
-    // The location of batman, also initx and intiy, which I used initially 
-    int initx, inity, cur_batx, cur_baty, count;
-    // Variable Definitions for the limits from the top, bottom, left, and right
+    // The location of batman, also count, which is just used to check if we are in the first round, this is for some levels it is important to start in the right position.
+    int cur_batx, cur_baty, count;
+    // Variable Definitions for the limits of where the bomb could be from the top, bottom, left, and right
     int upr_lim, lwr_lim, lft_lim, rgt_lim;
-    // My final solution used what I called limits. The basic idea is that if the bomb is insome direction from batman, we should not go in the opposite direction. This only becomes an issue in later stages where overshooting is likely.
-    // 
-    // I also have a count variable, this lets me set a specific place to go to on my first turn,This helps with one of the levels that does not work well with my chosen method.
+    // My final solution used what I called limits (defined above). The basic idea is that if the bomb is in some direction from batman, we should not go in the opposite direction. This only becomes an issue in later stages where overshooting is likely.
+
+    // count is initially set to zero, and the inital limits are set
     count = 0;
+    // These limits are essentially the edge of the board, because we don't know where the bomb could be.
     upr_lim = 0;
     lwr_lim = h;
     lft_lim = 0;
@@ -75,8 +79,11 @@ int main()
     // ---------
     // The input that the game gives the player is the general direction of the bomb. These directions are listed in the code, we'll use this to find the bomb.
 
-    while (1) {
-        // The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
+    while (1)   {
+        //The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
+        // Each direction is specified by a letter, U D R L as Up Down Right and Left respectively. if there's only one letter (like U) then that means you have the other direction correct, and only need to move in that one direction. Two letters means it is on some diagonal and you need to change both coordinates. 
+        // 
+        // **Important:** the coordinates are set up with zeros in the top left and max hieght and width in the bottom right. So, while I know it is confusing it's important to understand that when I say Up, I mean smaller coordinates and when I say Down I mean larger coordinates.
         string bomb_dir; 
         cin >> bomb_dir; cin.ignore();
 
@@ -84,63 +91,41 @@ int main()
         cur_baty = baty;
         
         // This "if block" should only run if the game is in the **first** round. This is for the second to last level because without it the program will fail, however even with this the program will pass on all other levels
+        //
+        // Unfortunately I couldn't think of another way to solve this problem without this quick fix. 
         if (count == 0){
-            batx = 3;
-            // One of the levels is a single wide tower, so a x location of 0 **must** be given to pass that stage.
-            if(w < 3){
-                batx = 0;
-            }
-            baty = 3;
+            batx = 0;
+            baty = h/5;
             count++;
         }
-
         // For each of these if, else if statements the direction is checked and the limit for the opposite direction is set. This is so that Batman doesn't accidentally go backwards in future rounds.
-        if (bomb_dir == "U"){
-            lwr_lim = cur_baty;
+        if (bomb_dir.find("U") != string::npos){
+            // here I assign my lower limit to be one space below where batman currently is. This helps me in later steps so when I'm calculating moves I don't accidentally move into an area I should have already ruled out.
+            lwr_lim = cur_baty+1;
 
-            batx = batx;
+            // This assignment is necessary because the integer division below it will not give a position of 0, so if you're at y position 1 and the bomb is up the bomb is at position 0;
             if(baty == 1){
                 baty = 0;
             }
             else{
+                // Here I use my upper limit to help find how far up I need to go. I don't want to move past where I've already been, so I subract my current position by the farthest up I've been and then divide by two to get the point in the middle.
                 baty -= (baty - upr_lim)/2;
+                // It's also important to note that I use a divide by 2 because I feel on average picking the point in the middle will cut out the most possible positions.
             }
         }
-        else if(bomb_dir == "UR"){
-            lft_lim = cur_batx;
-            lwr_lim = cur_baty;
+        // The other three definitions are pretty similar to the first one, first we set the limit for the adjacent line of coordinates opposite to the direction the bomb is in, then we set the next coordinate as halfway between where we currently are and the limit in the direction of the bomb.
+        if (bomb_dir.find("R") != string::npos){
+            lft_lim = cur_batx-1;
 
             batx += (rgt_lim - batx)/2;
-
-            if(baty == 1){
-                baty = 0;
-            }
-            else{
-                baty -= (baty - upr_lim)/2;
-            }
         }
-        else if (bomb_dir == "R"){
-            lft_lim = cur_batx;
-
-            batx += (rgt_lim - batx)/2;
-            baty = baty;
-        }
-        else if (bomb_dir == "DR"){
-            lft_lim = cur_batx;
+        if (bomb_dir.find("D") != string::npos){
             upr_lim = cur_baty;
 
-            batx += (rgt_lim - batx)/2;
             baty += (lwr_lim - baty)/2;
         }
-        else if (bomb_dir == "D"){
-            upr_lim = cur_baty;
-
-            batx = batx;
-            baty += (lwr_lim - baty)/2;
-        }
-        else if (bomb_dir == "DL"){
-            rgt_lim = cur_batx;
-            upr_lim = cur_baty;
+        if (bomb_dir.find("L") != string::npos){
+            rgt_lim = cur_batx+1;
 
             if(batx == 1){
                 batx = 0;
@@ -148,43 +133,28 @@ int main()
             else{
                 batx -= (batx - lft_lim)/2;
             }
-            
-            baty += (lwr_lim - baty)/2;
         }
-        else if (bomb_dir == "L"){
-            rgt_lim = cur_batx;
-
-            if(batx == 1){
-                batx = 0;
-            }
-            else{
-                batx -= (batx - lft_lim)/2;
-            }
-        
-            baty = baty;
-        }
-        else if (bomb_dir == "UL"){
-            rgt_lim = cur_batx;
-            lwr_lim = cur_baty;
-
-            if(batx == 1){
-                batx = 0;
-            }
-            else{
-                batx -= (batx - lft_lim)/2;
-            }
-
-            if(baty == 1){
-                baty = 0;
-            }
-            else{
-                baty -= (baty - upr_lim)/2;
-            }
-        }
-
+        // Below is an example of how I did my boolean operations. I looked for the exact string for each possible output. This was not the best way to do this because it took up way too much space.
+    //
+    // .. code::
+    // 
+    //  else if(bomb_dir == "UR"){ 
+    //      lft_lim = cur_batx-1;
+    //      lwr_lim = cur_baty+1;
+    // 
+    //      batx += (rgt_lim - batx)/2;
+    // 
+    //      if(baty == 1){
+    //          baty = 0;
+    //      }
+    //      else{
+    //          baty -= (baty - upr_lim)/2;
+    //      }
+    //  }
+    // 
+    // Finally The output is a simple cout of the two coordinates that we calculated.
         //Write an action using cout. DON'T FORGET THE "<< endl"
-        //
-        To debug: cerr << "Debug messages..." << endl;
+        //To debug: cerr << "Debug messages..." << endl;
 
 
         //the location of the next window Batman should jump to.
