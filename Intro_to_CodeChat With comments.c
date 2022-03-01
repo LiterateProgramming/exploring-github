@@ -20,7 +20,9 @@
 // Thoughts Before Coding
 // =========================
 
-// This game has you controlling a lander to safely land it on mars. Using the lander's speed, thrust, and angle, the user must code an algorithm to land on Mars without exploding
+// .. note::
+//  The game objective is not described clearly
+
 
 // For the puzzle we are given seven integer type variables
 
@@ -38,16 +40,14 @@
 // * At what elevation does speed need to be sharply reduced?
 // * What is the maximum speed the lander can have and still make a safe landing (Safe meaning not blowing up on impact)
 
-// * The fuel is very limited, limited enough that if you spend to much time not on the ground, you will lose all thrust and slam into the ground
-// * The elevation is key for speed control. Once at a certain speed at a certain elevation, the full force thrust of the lander simply will not slow you down enough to stop from crashing into the ground 
+// .. note::
+//  Why do these things matter in the game?
 
 // *For this puzzle, all we need to worry about is the Y coordinate of the rocket, the vertical speed, the fuel level, and the thruster power.*
 
 // =========================
 // Implementing Code
 // =========================
-
-// **All code below down to the next bold message is pre generated code for the game**
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -89,7 +89,8 @@ int main()
 
 // **The code below contains the solution, everything above was pre generated for this puzzle**
 
-
+// .. note::
+//  This message signifying when the code that matters needs to have more clarification earlier in the file
 
 // The solution begins with an if else statement that looks at the Y altitude. If the landers is more than 1250 meters, it was retain a speed of -25 m/s as to not gain too much speed and lose control.
 
