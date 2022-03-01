@@ -18,19 +18,19 @@ This problem requires the user to code a process to get batman to a bomb in a bu
 The output that we give the game is the next location that we would like to move. For
 example, in the picture above the bomb is far up and to the right, so the next location 
 we would want to choose would be to a location like (10,2). 
-*/
 
-/*
+Something that also should be noted about the above picture are the two red lines flanking Batman. These are a graphical representation of what I call "limits". Limits are essentially coordinates, either x or y, that Batman is restricted from going past. So in a future move Batman will use the limits defined before as an outer bounds to help calculate his next move. We decide limits based on the direction that the game gives us for the bomb. For our example above, because the bomb is above and to the right, we know for sure that it is not anywhere below or to the left of our current position. by using this method repeatedly we cut down the search area until we can make our final move with certainty. 
+
 Code 
 ====
 The following will be the source code for the solution, along with some explanation and reasoning behind the solution process.
-*/
 
-// Includes
-// --------
+Includes
+--------
+*/
 #include <iostream>
 #include <string>
-#include <vector>`
+#include <vector>
 #include <algorithm>
 
 using namespace std;
