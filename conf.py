@@ -134,8 +134,8 @@ source_suffix = ".rst"
 # given glob-style pattern (e.g. `glob
 # <https://docs.python.org/3/library/pathlib.html#pathlib.PurePath.match>`_).
 CodeChat_lexer_for_glob = {
-    # The codechat_config.json file uses ``#`` for comments; so does Python.
-    "codechat_config.json": "Python",
+    # These files use # as a comment. So does Perl. Ugly, no?
+    ".gitignore": "Perl",
 }
 
 # `source_encoding <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-source_encoding>`_:
