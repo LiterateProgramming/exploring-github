@@ -13,9 +13,6 @@ Contents:
     :maxdepth: 2
 
     Shadow_of_Knight_Solution.c
-    conf.py
-    codechat_config.yaml
-    thor.py
    
 
 .. 
