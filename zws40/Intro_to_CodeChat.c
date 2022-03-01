@@ -20,6 +20,10 @@
 // Thoughts Before Coding
 // =========================
 
+// .. note::
+//  The game objective is not described clearly
+
+
 // For the puzzle we are given seven integer type variables
 
 // 1. X coordinate of the rocket
@@ -36,6 +40,8 @@
 // * At what elevation does speed need to be sharply reduced?
 // * What is the maximum speed the lander can have and still make a safe landing (Safe meaning not blowing up on impact)
 
+// .. note::
+//  Why do these things matter in the game?
 
 // *For this puzzle, all we need to worry about is the Y coordinate of the rocket, the vertical speed, the fuel level, and the thruster power.*
 
@@ -82,6 +88,9 @@ int main()
         scanf("%d%d%d%d%d%d%d", &X, &Y, &h_speed, &v_speed, &fuel, &rotate, &power);
 
 // **The code below contains the solution, everything above was pre generated for this puzzle**
+
+// .. note::
+//  This message signifying when the code that matters needs to have more clarification earlier in the file
 
 // The solution begins with an if else statement that looks at the Y altitude. If the landers is more than 1250 meters, it was retain a speed of -25 m/s as to not gain too much speed and lose control.
 
