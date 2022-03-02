@@ -1,4 +1,7 @@
 # ****************************************
 # |docname| - Files that Git should ignore
 # ****************************************
+# Per the `git docs <https://git-scm.com/docs/gitignore>`_, this file specifies intentionally untracked files to ignore. In general, ignore files produced by running a program on source files in a repository, such as the output of a compiler/assembler or (in this case) Sphinx. See `What to add to your Gitignore File <https://zellwk.com/blog/gitignore/>`_.
+#
+# Ignore everything produced by Sphinx.
 _build/

@@ -1,24 +1,29 @@
-*********************************
-Code solutions for codingames.com
-*********************************
-Contents:
+****************************************
+Code solutions for https://codingame.com
+****************************************
+This project provides a place to showcase the various programs written to solve puzzles at https://codingame.com.
+
+
+Solutions
+=========
+Solutions will appear here as they are merged.
 
 .. toctree::
     :maxdepth: 2
 
-    .gitignore
-    abp168/index
 
+
+Supporting files
+================
+Instead of offering puzzle solutions, these files define the Sphinx project used to render the files or configure Git for this project.
 
 .. toctree::
-    :hidden:
 
     conf.py
     codechat_config.yaml
+    .gitignore
 
 
-Indices and tables
-------------------
-* :ref:`genindex`
-* :ref:`modindex`
+Search
+======
 * :ref:`search`
