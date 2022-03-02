@@ -24,11 +24,15 @@ The light of power is the location that Thor is trying to get to and in order to
 #include <algorithm>
 
 using namespace std;
-
 /*
-**This line of code will be given to you**
+Provided Code
+--------------
 */
-int main()
+/* These are the functions and variables that are also provided to the developer when you begin the coding game.
+*/
+
+int main() 
+//beginning bracket
 {
     int light_x; // the X position of the light of power
     int light_y; // the Y position of the light of power
@@ -36,21 +40,31 @@ int main()
     int initial_ty; // Thor's starting Y position
     cin >> light_x >> light_y >> initial_tx >> initial_ty; cin.ignore();
 
-// **The game loop begins here**
+
     while (1) {
     
         
         int remaining_turns; // The remaining amount of turns Thor can move. Do not remove this line.
         cin >> remaining_turns; cin.ignore();
+        
 /*
-This a diagram of Thor at his starting position
+Diagram
+--------
 
-.. image:: ThorPwr.jpg
+.. image:: InkedThorDiagram.jpg
 
 
-**Discription/Directions: The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of thor as he moves within the bondary conditions. Remember the objective is to get thor to move towards the light of power. The directions you will be using will be N(North), NE(North East), E(East), SE(South East), S(South), SW(South West), W (West), or NW(North West).**
+**Discription/Directions:** 
+
+This a diagram of Thor at his starting postion. The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of Thor as he moves within the boundary conditions. Remember the objective of the game is to get Thor to move towards the light of power. The directions you will use are: 
+
+*N (North), NE (North East), E (East), SE (South East), S (South), SW(South West), W (West), and NW (North West).*
+
 */
-/*
+/* 
+Thor's Movement
+----------------
+**Based on the position light of power I first determined which direction he would travel and then developed this code on the basis of each test code.**
 
 **Test case 1 & 2:**
 ---------------------
@@ -67,39 +81,42 @@ Easy angle is where things get a little tricky. In order to make Thor move towar
 
 The final test case (Optimal angle) utilizing everything implemented before while also assuring that the whole code is properly looped so that you can play all testcases. Here is where you apply the use of if and else if statements to get the last angle to be short but also keep you from running out of energy. In this case in order to achieve the angle you desire you must increment thor's inital X and Y position in the SE (South East) direction.
 
-/*
+/* 
+*Note: In order to loop each of the test cases to work all at the same time you have to use an if statement so that you can input more than one direction for each time that Thor moves. You will notice that as you play each testcase. Your conditions are created by making the light of power position X or Y (light_x/light_y) greater than or less than the positon of Thor(initial_tx/initial_ty) in the X or Y.*
 
-Note: In order to loop each of the test cases to work all at the same time you have to use an if statement so that you can input more than one direction for each time that Thor moves. You will notice that as you play each testcase. Your conditions are created by making the light of power position X or Y (light_x/light_y) greater than or less than the positon of Thor(initial_tx/initial_ty) in the X or Y.
-
+Code for Movement
+------------------
 */
-
-        // **this is the fourth test case...**
-        if((light_y > initial_ty) && (light_x > initial_tx))
-        //optimal angle code
-        {
-            cout << "SE" << endl;
-            initial_tx++;
-            initial_ty++;
-        }
-        // **This is the first test case below...**
-        else if(light_x > initial_tx) {
-            cout << "E" << endl;
-        }
-        // **This is the second test case...**
-        else if(light_y < initial_ty) {
-            cout << "N" << endl;
-        }
-        // **This is the third test case...**
-        else if(light_y > initial_ty) {
-            cout << "SW" << endl;
-            initial_ty++;
-        }
-        else if(light_x < initial_tx) {
-            cout << "W" << endl;
-            initial_tx--;
-        }
-        // **Don't forget to include the "else{}" statment at the end.**
-        else{};
-    }
+// **this is the fourth test case...**
+if((light_y > initial_ty) && (light_x > initial_tx))
+{
+    cout << "SE" << endl;
+    initial_tx++;
+    initial_ty++;
 }
-// **Now you can press "PLAY ALL TESTCASES"**
+// **This is the first test case below...**
+else if(light_x > initial_tx) {
+    cout << "E" << endl;
+}
+// **This is the second test case...**
+else if(light_y < initial_ty) {
+    cout << "N" << endl;
+}
+// **This is the third test case...**
+else if(light_y > initial_ty) {
+    cout << "SW" << endl;
+    initial_ty++;
+}
+else if(light_x < initial_tx) {
+    cout << "W" << endl;
+    initial_tx--;
+} 
+// **Don't forget to include the "else{}" statment at the end.**
+else{};
+}
+}// closing bracket
+
+/* **Now you can press "PLAY ALL TESTCASES"**
+
+*Note for room of improvement: A way that was brought to my improve this code be to create a solution separate from the test cases that will move Thor to the light from any position on the map.I am open to edits to aid in the further development of this code to make it reusable for any instance!*
+*/
