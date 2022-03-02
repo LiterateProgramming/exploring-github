@@ -10,8 +10,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   conf.py
-   codechat_config.yaml
    shadows_of_knight_ep1.py
    shadows_of_knight_ep1_(sam1123_Comments).py
 
