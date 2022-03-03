@@ -21,34 +21,31 @@
 # .. image:: starter_code.png
 #   :width: 100%
 #
-# The first two lines import libraries that you need.
+# The first two lines import libraries that you need:
 import sys
 import math
-# |
-# | These lines explain the variables given:
-# | ``light_x``: the X position of the light of power 
-# | ``light_y``: the Y position of the light of power
-# | ``initial_tx``: Thor's starting X position
-# | ``initial_ty``: Thor's starting Y position
+# These are the given variables:
+#
+#   :light_x: the X position of the light of power
+#   :light_y: the Y position of the light of power
+#   :initial_tx: Thor's starting X position
+#   :initial_ty: Thor's starting Y position
 # 
 # These variables never change. **You will need to make two new variables for Thor's current position.** Give them *meaningful* names, like ``thor_x`` and ``thor_y``.
 #
-# | The next line of code uses the ``split()`` method to parse input from the game. You can read more about ``split`` `here <https://www.tutorialspoint.com/python3/string_split.htm>`_. Basically, the game starts you with a string like "3 8 3 6" and this line takes that string and sets the light position variables to (3,8) and Thor's initial position to (3,6).
+# The next line of code uses the ``split()`` method to parse input from the game. You can read more about ``split`` `here <https://www.tutorialspoint.com/python3/string_split.htm>`_. Basically, the game starts you with a string like "3 8 3 6" and this line takes that string and sets the light position variables to (3,8) and Thor's initial position to (3,6):
 light_x, light_y, initial_tx, initial_ty = [int(i) for i in input().split()]
-# |
-# | Then there's an infinite while loop. Whatever you want Thor to do each turn, you put it in the loop. But remember, you need to keep track of Thor's *current* position:
+# Then there's an infinite while loop. Whatever you want Thor to do each turn, you put it in the loop. But remember, you need to keep track of Thor's *current* position:
 thor_x = initial_tx
 thor_y = initial_ty
-# |
-# | the while loop:
+# Main loop
+# ---------
 while True:
-# |
-# | This line keeps track of how many turns you have left.
+# This line keeps track of how many turns you have left:
     remaining_turns = int(input())
-# |
-# | The starter code also tells you how to add debug messages
-# | ``print("Debug messages...", file=sys.stderr, flush=True)``
-# 
+# The starter code also tells you how to add debug messages:
+# ``print("Debug messages...", file=sys.stderr, flush=True)``
+#
 # How do I make Thor walk?
 # ========================
 # With ``print()`` statements. There are eight valid directions: "N", "NE", "E", "SE", "S", "SW", "W", and "NW". So ``print("N")``, will make Thor take one step "up".
@@ -79,14 +76,11 @@ while True:
 # .. image:: sketch.png
 #   :width: 100%
 # 
-# |
-# | 1. I drew a map of the game grid and labeled the corners
-# | 2. I put Thor at (20, 10), near the center of the map.
-# | 3. Then for each of the eight possible directions, I wrote out some hypothetical coordinates. 
-# | E.g. if the light was directly to the east, then its x-coordinate would be higher than Thor's, but the y-coordinate would be the same, for example (25, 10)
-# | 4. I then wrote out the checks needed for each direction.
-# | E.g. if ``thor_x`` ("tx" in the sketch) is ``< light_x``, then he needs to go east
-# | 5. Finally, I figured out how Thor's position would need to update after he'd moved in that direction. For east, it would be ``thor_x += 1``
+# #. I drew a map of the game grid and labeled the corners
+# #. I put Thor at (20, 10), near the center of the map.
+# #. Then for each of the eight possible directions, I wrote out some hypothetical coordinates. E.g. if the light was directly to the east, then its x-coordinate would be higher than Thor's, but the y-coordinate would be the same, for example (25, 10)
+# #. I then wrote out the checks needed for each direction. E.g. if ``thor_x`` ("tx" in the sketch) is ``< light_x``, then he needs to go east
+# #. Finally, I figured out how Thor's position would need to update after he'd moved in that direction. For east, it would be ``thor_x += 1``
 #
 # Can you do the first one for me?
 # ================================
@@ -96,7 +90,6 @@ while True:
         print ("NE")
         thor_x += 1
         thor_y -= 1
-# |
 #
 # What if I want him to move a different direction besides NE?
 # ==================================================================
@@ -106,7 +99,6 @@ while True:
         print ("SE")
         thor_x += 1
         thor_y += 1
-# |
 #
 # Why don't I just move him one of the four cardinal directions each turn?
 # ============================================================================================
@@ -156,4 +148,3 @@ while True:
     elif thor_x > light_x:
         print("W")
         thor_x -= 1
-
