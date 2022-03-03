@@ -1,15 +1,19 @@
-# *********************************************************************
-# |docname| - Solution by JP Gathings (my code)
-# *********************************************************************
+# *************************************
+# Shadows of the Night - Ep1 - By JP
+# *************************************
 # The purpose of this program is to solve the puzzle: `SHADOWS OF THE KNIGHT - EPISODE 1 <https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1>`_,
 # from the educational website `codingames.com <https://www.codingame.com/home>`_.
 # 
+# .. note::
+# 
+#  **Since this file has more than one game soultion, I added the Authors name to each. - Olivia Starnes**
 # 
 # Goal
 # ====
 # The objective of the game is to get to the bomb in as few jumps as possible.
 # 
 # You are given the size of the grid, the starting location and direction of the bomb. The number of jumps you are allowed to make is limited and the game will provide the direction in which the target is.
+#
 #
 # Inputs
 # ======
@@ -18,15 +22,24 @@
 #   * **w**: width of the building. (int)
 #   * **h**: height of the building. (int)
 #   * **n**: maximum number of turns the useer has to make it to the bomb. (int)
-#   * **bomb_dir**: The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL). The letters stand for Up, Down, Left, and Right. However, here it is just initialized as "AB" for organization. (string)
-from curses import A_ALTCHARSET
-from re import A
+#
+# .. note::
+# 
+#   **One to many e's in user - Olivia Starnes**
+#
+
+#  * **bomb_dir**: The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL). The letters stand for Up, Down, Left, and Right. However, here it is just initialized as "AB" for organization. (string)
 import sys
 import math
 w, h = [int(i) for i in input().split()]
 n = int(input())  # maximum number of turns before game over.
 x0, y0 = [int(i) for i in input().split()]
 bomb_dir = "AB"
+
+# .. note::
+# 
+#  **Need to state which code you are using. Remember this is for others to be able to follow. - Olivia Starnes**
+#
 # Approach
 # ========
 # | The approach we are taking is based on a binary search tree. We will check what *directions* are in the **bomb_dir** string and write if-statements for each case.
@@ -74,3 +87,7 @@ while True:
     print(x0, y0, file=sys.stderr, flush=True)
     # This is how the game tells us to make our jump to coordinates the x0 and y0 we just calculated.
     print(x0, y0)
+
+# .. note::
+# 
+#  **I removed the Class notes. I like how everything has a comment explaining the use of the code. Probably could have used more isllustrations then the one picture that reminds me personally of mine sweep. I think this is written in python, which I am still learning so I will have to take your word on the coding part. Did it pass all the test though?  - Olivia Starnes**
