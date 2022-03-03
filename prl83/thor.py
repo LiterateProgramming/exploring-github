@@ -41,10 +41,10 @@ thor_y = initial_ty
 # Main loop
 # ---------
 while True:
-# This line keeps track of how many turns you have left:
+#     This line keeps track of how many turns you have left:
     remaining_turns = int(input())
-# The starter code also tells you how to add debug messages:
-# ``print("Debug messages...", file=sys.stderr, flush=True)``
+#     The starter code also tells you how to add debug messages:
+#     ``print("Debug messages...", file=sys.stderr, flush=True)``
 #
 # How do I make Thor walk?
 # ========================
