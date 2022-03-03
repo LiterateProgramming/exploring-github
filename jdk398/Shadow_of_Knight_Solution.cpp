@@ -27,7 +27,7 @@ For this solution I use the find function of the string class that the game requ
 
 What this snippet of code is doing is trying to find the character R in the string supplied, if what it returns is not equal to the value defined as essentially "sub character not found", then the if receives a true and we go into the if's code. 
 
-Each section is a seperate if statement, so that if the program finds R, it will still look for U or D to see if the direction is diagonal.
+Each section is a separate if statement, so that if the program finds R, it will still look for U or D to see if the direction is diagonal.
 
 Code 
 ====
@@ -91,7 +91,7 @@ int main()
         //The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
         // Each direction is specified by a letter, U D R L as Up Down Right and Left respectively. if there's only one letter (like U) then that means you have the other direction correct, and only need to move in that one direction. Two letters means it is on some diagonal and you need to change both coordinates. 
         // 
-        // **Important:** the coordinates are set up with zeros in the top left and max hieght and width in the bottom right. So, while I know it is confusing it's important to understand that when I say Up, I mean smaller coordinates and when I say Down I mean larger coordinates.
+        // **Important:** the coordinates are set up with zeros in the top left and max height and width in the bottom right. So, while I know it is confusing it's important to understand that when I say Up, I mean smaller coordinates and when I say Down I mean larger coordinates.
         string bomb_dir; 
         cin >> bomb_dir; cin.ignore();
 
