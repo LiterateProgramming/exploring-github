@@ -1,5 +1,5 @@
 # *************************************************
-# Dr. Jones Comments - Shadows of the Knight Ep. 1
+# Aaron Powell - Shadows of the Knight Ep. 1
 # *************************************************
 # This solves the `Shadows of the Knight Ep.1 puzzle <https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1>`_.
 #
@@ -28,7 +28,7 @@
 #  
 # Solution Method
 # ===============
-# The following section demonstrate the solution used to solve the Shadows of the Kinght Ep.1 Problem
+# The following section demonstrate the solution used to solve the Shadows of the Knight Ep.1 Problem
 #
 # Background
 # ----------
@@ -39,11 +39,8 @@
 # .. image:: diagram.png
 #  :width: 100%
 #
-# .. note::
-#
-#   This is very helpful! Explain a bit more with text following the image: why change max_h/w or minh_w by one? How does the formula you came up with implement the binary search?
-#
-# As depctied in the image above, using binary search can help window the target bomb for Batman. If one were to use the min and max boundries in the width and height axis as a guide to either increment or decrement (on each axis respectfully) depending on the provided input direction of the relative bomb location, the bomb could be find in O(logn) time instead of iterating through each position in the respected axis. In order for Batman to find the bomb without going past the target area, it is necessary to have a small step size during the binary search algorithm. As a result, the algorithm should only update ``max_h/w`` and ``min_h/w`` by 1 depending on the relative direction of the bomb to batman.
+# 
+# As depictied in the image above, using binary search can help window the target bomb for Batman. If one were to use the min and max boundaries in the width and height axis as a guide to either increment or decrement (on each axis respectfully) depending on the provided input direction of the relative bomb location, the bomb could be find in O(log(n)) time instead of iterating through each position in the respected axis. In order for Batman to find the bomb without going past the target area, it is necessary to have a small step size during the binary search algorithm. As a result, the algorithm should only update ``max_h/w`` and ``min_h/w`` by 1 depending on the relative direction of the bomb to batman.
 #
 #
 # Code
@@ -51,6 +48,11 @@
 # Provided Code:
 import sys
 import math
+# To begin the game, the width, height, and number of turns before the game is over must be read in from the user (as shown below).
+# 
+# ``w``: width of the board game Batman can access
+#
+# ``h``: height of the board game Batman can access
 w, h = [int(i) for i in input().split()]
 # ``n``: maximum number of turns before game over.
 n = int(input())  
@@ -67,15 +69,18 @@ upwards = ['U', 'UR', 'UL']
 downwards = ['D', 'DR', 'DL']
 left = ['L', 'UL', 'DL']
 right = ['R', 'UR', 'DR']
-# In order to keep track of the boundries of the binary search algorithm, the minimum width ``min_w`` and minimum height ``min_h`` are set to 0. The maximum width ``max_w`` and maximum height ``max_h`` are intialized to the given input length minus 1 (zero based)
+# In order to keep track of the boundaries of the binary search algorithm, the minimum width ``min_w`` and minimum height ``min_h`` are set to 0. The maximum width ``max_w`` and maximum height ``max_h`` are intialized to the given input length minus 1 (zero based)
 min_w = 0
 max_w = w - 1
 min_h = 0
 max_h = h - 1
-# game loop
+# =========
+# Game loop
+# =========
 while True:
-    bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
-
+    # ``bomb_dir``: the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+    bomb_dir = input()  
+    #
     # Write an action using print
     # To debug: print("Debug messages...", file=sys.stderr, flush=True)
     #
