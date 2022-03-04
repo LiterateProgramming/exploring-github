@@ -9,11 +9,13 @@
 // =====================
 // * Thor needs to be able to move based on the different locations of the power orb.
 // * Thor currently just walks off the screen and goes out of bounds due to being stuck in a while loop that does not check to see thor's location in relation to either the light or the border of the screen.
-// * There is going to need to be a way to increment Thor’s location in at least two variables depending on the cardinal direction he moves in.
+// * There is going to need to be a way to increment Thor’s location in at least two variables depending on the cardinal direction he \moves in.
 // * Make a variable that is Thor’s updated location after he moves from his initial location, then change this variable based on checking where thor is in relation to the power orb.
 // * Use *if statements* to check for thor’s updated location compared to the orb, then use *else statements* to compare them for each direction that thor can move in.
-//
+// 
 // .. image:: Power_Of_Thor.png
+//
+// The idea is that Thor has an x and y position that is separate from the x and y position of the power, and this image shows that the plane is 40 wide by 18 high, but due to arrays this runs from 0 to 39 and 0 to 17.
 //
 // -------------------
 // Desgin Constraints
