@@ -11,6 +11,7 @@ Solutions will appear here as they are merged.
 .. toctree::
     :maxdepth: 2
 
+    abp168/shadows_of_knight_ep1.py
 
 
 Supporting files
