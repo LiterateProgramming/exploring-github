@@ -1,12 +1,8 @@
 // *************
 // Power of Thor
 // *************
-// This is my solution for the Power of Thor coding game: https://www.codingame.com/training/easy/power-of-thor-episode-1/solution.
-// The process behind this solution is explained in the rest of this document.
+// This is my solution for the `Power of Thor coding game <https://www.codingame.com/training/easy/power-of-thor-episode-1/solution>`_
 //
-// .. note::
-//
-//  Provide a nicer link, like this: "This is my solution for the `Power of Thor coding game <https://www.codingame.com/training/easy/power-of-thor-episode-1/solution>`_."
 //
 // =====================
 // Thought Process
@@ -30,40 +26,39 @@
 // Defined Variables
 // ---------------------
 //
-        // .. note::
-        //
-        //  Put comments on a separate line, so they're rendered nicely.
         string[] inputs = Console.ReadLine().Split(' ');
-        int lightX = int.Parse(inputs[0]); // the X position of the light of power
-        int lightY = int.Parse(inputs[1]); // the Y position of the light of power
-        int initialTX = int.Parse(inputs[2]); // Thor's starting X position
-        int initialTY = int.Parse(inputs[3]); // Thor's starting Y position
+        int lightX = int.Parse(inputs[0]); 
+        // The X position of the light of power
+        int lightY = int.Parse(inputs[1]); 
+        // The Y position of the light of power
+        int initialTX = int.Parse(inputs[2]); 
+        // Thor's starting X position
+        int initialTY = int.Parse(inputs[3]); 
+        // Thor's starting Y position
  //
- // The first two variables, lightX and lightY, are used to set where the coordinates of the light orb's location for each new level of the game. I then defined initialTX and initialTY to be Thor's initial location. When first designing this program, I had two addtional variables that would update to thor's new location, but I realized when working through this that the initialTX and initialTY variables can be used for both functions.
-//
-        // .. note::
-        //
-        //  Align comments with code!
+        // The first two variables, lightX and lightY, are used to set where the coordinates of the light orb's location for each new level of the game. I then defined initialTX and initialTY to be Thor's initial location. When first designing this program, I had two addtional variables that would update to thor's new location, but I realized when working through this that the initialTX and initialTY variables can be used for both functions.
 //
 //
-        string directionX = "";// Blank X direction string to fill with direction thor will move in.
-        string directionY = "";// Blank Y direction string to fill with direction thor will move in.
-// These variables are used to read in the cardinal direction given by the player of the game.
+//
+        string directionX = "";
+        // Blank X direction string to fill with direction thor will move in.
+        string directionY = "";
+        // Blank Y direction string to fill with direction thor will move in.
+        // These variables are used to read in the cardinal direction given by the player of the game.
 
 // ****************
 // Solution
 // ****************
-// This code is what I came up with to move Thor by going into a while loop and then using if else statements to compare thor's location with the location of the orb, and then increment either the X or the Y variable based on where Thor moved in relation to the Orb.
-//
-// .. note::
-//
-//  Explain the code below. How did you map directions to the various if statments? Why does ``initialTX/Y`` need to be updated? Does this program print two directions, like WE to move west and north? Shouldn't it print NE instead?
+// This code operates by making multiple comparisons each time Thor moves. The loop begins by establishing that thor has a X and a Y direction, and creating a string variable that will store the Direction in it. For example, if Thor needs to move to the bottom right, then the if statements will check for whether Thor's X location is larger than the light's X value. The same will be done for the Y values of the game. Therefore after several runs through the code you will be moving in all cardinal directions. So the basic idea is that the strings will tell which cardinal direction we want to go in, while the code itself will run comparisons between thor's orginal/updated location and the light's location to decide if the move is valid for the game to be won. 
             while (true)
         {
-            int remainingTurns = int.Parse(Console.ReadLine()); // The remaining amount of turns Thor can move. Do not remove this line.
+            int remainingTurns = int.Parse(Console.ReadLine()); 
+            // The remaining amount of turns Thor can move. Do not remove this line.
 
-            string directionX = "";// Blank X direction string to fill with direction thor will move in.
-            string directionY = "";// Blank Y direction string to fill with direction thor will move in.
+            string directionX = "";
+            // Blank X direction string to fill with direction thor will move in.
+            string directionY = "";
+            // Blank Y direction string to fill with direction thor will move in.
 
             if (initialTX > lightX)
             {
