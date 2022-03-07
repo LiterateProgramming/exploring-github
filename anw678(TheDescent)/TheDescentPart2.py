@@ -39,29 +39,20 @@
 import sys
 import math
 while True:
+    max = 0
+    maxIndex = -1
     for i in range(8):
+        # We will use "mountain_h" as our variable for the height of a mountain
         mountain_h = int(input())
-        # ^ mountain_h represents the height of one mountain.
-        #
-        # .. note::
-        #
-        #   Put comments before the line where they're used instead. For example::
-        #
-        #       # mountain_h represents the height of one mountain.
-        #       mountain_h = int(input())
 #
 # Now we must write an action using print:
 #
-# The index of the mountain to fire on in this case is 4
-    print("4")
-    # .. note::
+# The index of the mountain to fire on in the first test case is 4. To fire on this mountain we use:
     #
-    #   I want your program to still run -- this program doesn't solve the problem, since it runs the "native" approach above. Comment out code like this, which allows you to explain it without having it run. For example::
-    #
-    #       # The index of the mountain to fire on in this case is 4
+    #       
     #       print("4")
-
-# As you can see, this example solution takes the mountain height (mountain_h) as an input, but then prints the output mountain 4. This tells the program to fire on the mountain in index 4, regardless of height.
+#
+# As you can see, this example solution takes the mountain height (mountain_h) as an input, and then prints the output mountain 4. This tells the program to fire on the mountain in index 4, regardless of height.
 #
 # ------------------------
 # The "Brute Force" Method
@@ -69,39 +60,36 @@ while True:
 # Now that we know the basic rules for how the game works, we can start to solve it.
 #
 # The "brute force" method is to simply look at the mountain heights and output the one the ship needs to fire on. In the descending mountains test case seen in the photo, we can simply output the mountains in descending order as we need to fire on them:
-print("0")
-print("1")
-print("2")
-print("3")
-print("4")
-print("5")
-print("6")
-print("7")
+#
+# print("0")
+#
+# print("1")
+#
+# print("2")
+#
+# print("3")
+#
+# print("4")
+#
+# print("5")
+#
+# print("6")
+#
+# print("7")
+#
 # This works for this particular test case. However, it fails all the other ones. We could write a seperate solution for each testcase, but that would take too long and defeat the purpose of the game.
 #
 # Instead, we need to use a for loop.
 #
 # The Loop Solution
 # -----------------
-# The actual solution to this problem is to have the computer fire on the highest mountain like in our previouse solution, but also allow the computer to take over our job of deciding which mountain is the highest.
+# The actual solution to this problem is to have the computer fire on the highest mountain like in our previous solution, but also allow the computer to take over our job of deciding which mountain is the highest.
 #
 # --------------------------------------
 #
 # The code will take the mountain height given by the game as an input, and compare it to the current highest mountain height stored in our variable "mountain_h". It will then output (or "fire on") the highest mountain so that the ship is safe for that turn of the game. This is repeated for 8 turns until the ship is safe to land.
 #
 # **Game Loop**
-import sys
-import math
-while True:
-    max = 0
-    maxIndex = -1
-# The game is now set up, with our variable "max" set to zero in the index of -1.
-    # .. note::
-    #
-    #   Align your comments with your code!
-    for i in range(8):
-        mountain_h = int(input())
-# For 8 iterations, we will have the program read the height of the mountain as an integer input.
         if mountain_h > max:
             max = mountain_h
             maxIndex = i
@@ -114,15 +102,26 @@ while True:
 # -------------------------------------
 #
 # Here is the code in its entirety so you can test it out yourself!
-import sys
-import math
-while True:
-    max = 0
-    maxIndex = -1
-    for i in range(8):
-        mountain_h = int(input())
-        if mountain_h > max:
-            max = mountain_h
-            maxIndex = i
-    print(maxIndex)
+#   import sys
+#
+#   import math
+#
+#   while True:
+#
+    #   max = 0
+#
+    #   maxIndex = -1
+#
+    #   for i in range(8):
+#
+        #   mountain_h = int(input())
+#
+        #   if mountain_h > max:
+#
+            #   max = mountain_h
+#
+            #   maxIndex = i
+#
+    #   print(maxIndex)
+#
 # *Python is sensitive to indent. It is important that the print statement does not fall inside the if statement but does fall inside the for loop*
