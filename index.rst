@@ -12,6 +12,7 @@ Solutions will appear here as they are merged.
     :maxdepth: 2
 
     abp168/shadows_of_knight_ep1.py
+    prl83/thor.py
 
 
 Supporting files

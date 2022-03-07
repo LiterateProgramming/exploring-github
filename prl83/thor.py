@@ -1,6 +1,6 @@
-# ******************************
-# Power of Thor - Episode 1
-# ******************************
+# **************************************
+# Peter Loux - Power of Thor - Episode 1
+# **************************************
 # -------------
 # Introduction
 # -------------
@@ -30,7 +30,7 @@ import math
 #   :light_y: the Y position of the light of power
 #   :initial_tx: Thor's starting X position
 #   :initial_ty: Thor's starting Y position
-# 
+#
 # These variables never change. **You will need to make two new variables for Thor's current position.** Give them *meaningful* names, like ``thor_x`` and ``thor_y``.
 #
 # The next line of code uses the ``split()`` method to parse input from the game. You can read more about ``split`` `here <https://www.tutorialspoint.com/python3/string_split.htm>`_. Basically, the game starts you with a string like "3 8 3 6" and this line takes that string and sets the light position variables to (3,8) and Thor's initial position to (3,6):
@@ -66,7 +66,7 @@ while True:
 # Then what?
 # ==========
 #
-# Each turn, compare Thor's *current* position to the light's position. Figure out which direction he needs to go and ``print`` it. Then don't forget to update ``thor_x`` and ``thor_y`` to reflect where you moved him. 
+# Each turn, compare Thor's *current* position to the light's position. Figure out which direction he needs to go and ``print`` it. Then don't forget to update ``thor_x`` and ``thor_y`` to reflect where you moved him.
 #
 # Let's goooo!!
 # =============
@@ -75,7 +75,7 @@ while True:
 #
 # .. image:: sketch.png
 #   :width: 100%
-# 
+#
 # #. I drew a map of the game grid and labeled the corners
 # #. I put Thor at (20, 10), near the center of the map.
 # #. Then for each of the eight possible directions, I wrote out some hypothetical coordinates. E.g. if the light was directly to the east, then its x-coordinate would be higher than Thor's, but the y-coordinate would be the same, for example (25, 10)
