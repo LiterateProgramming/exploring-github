@@ -68,7 +68,7 @@ while True:
 #   :width: 30 %
 #
     # For the scenario above, the max is 10. That means our highest y is 9 and our low y is 0. We know the bomb is Up and to the Right and our current position is (5, 2). Since it is Up, we change our highest possible y value to the current y value minus 1. That means the bomb's y value is somewhere between y=0 and y=4 as seen by the blue. Our next y position is calculated by 0+(4-0) / 2 = 2. Meaning our next jump will be to y=2.
-    ## HORZONTAL
+    # **HORZONTAL**
     if "L" in bomb_dir:
         high_x = x0-1
     elif "R" in bomb_dir:
