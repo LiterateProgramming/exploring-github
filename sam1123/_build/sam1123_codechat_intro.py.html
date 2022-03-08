@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Coding with Reflection - Death-First Search &#8212; Project Name version 0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/CodeChat.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction to Sphinx" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Introduction to Sphinx"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Project Name version 0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding with Reflection - Death-First Search</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <script type="text/javascript">function CodeChat_doStyle(element) {function walk_tree(elements,func_walk,func_child) {let walk_children = [];for (let index = 0; index < elements.length; ++index) {let that = elements[index];while (that && !func_walk(that)) {that = that.parentElement;}if (that) {that = func_walk(that);walk_children.push(that);while (that && func_child(that)) {that = func_child(that);walk_children.push(that);}}}return walk_children;};element = (typeof element !== 'undefined') ? element : document;let code = element.getElementsByClassName("fenced-code");walk_tree(code, x => x.nextElementSibling, x => x.firstElementChild).map(x =>x.classList.add('CodeChat_noTop'));walk_tree(code, x => x.previousElementSibling, x => x.lastElementChild).map(x =>x.classList.add('CodeChat_noBottom'));}document.addEventListener("DOMContentLoaded", function(event) { CodeChat_doStyle(); });</script><section id="coding-with-reflection-death-first-search">
+<h1>Coding with Reflection - Death-First Search<a class="headerlink" href="#coding-with-reflection-death-first-search" title="Permalink to this headline">¶</a></h1>
+<p>Solving the the <a class="reference external" href="https://www.codingame.com/ide/puzzle/death-first-search-episode-1">death-first-search puzzle</a> from codingame</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-10" name="CodeChat-10" href="#CodeChat-10"></a> 
+</pre></div>
+</div>
+<section id="solution-method">
+<h2>Solution Method<a class="headerlink" href="#solution-method" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="dfs_solution.png"><img alt="dfs_solution.png" src="dfs_solution.png" style="width: 95%;" /></a>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-16" name="CodeChat-16" href="#CodeChat-16"></a> 
+</pre></div>
+</div>
+<p>My <em>intended</em> solution was going to include a graph search to find the shortest path. The virus moves as the code cuts the path, so the the shortest path is constantly changing. The solution would use depth first search to find the path to the exit then close the path farthest down the tree to the exit.</p>
+<p>My actual solution just ended up being to randomly cut a path in the graph. If the virus was next to an exit the program then cuts that exit path, and the process repeats. <strong>This solution passed all the test cases of the codingame.</strong></p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-20" name="CodeChat-20" href="#CodeChat-20"></a> 
+</pre></div>
+</div>
+<section id="imports-and-variables">
+<h3>Imports and Variables<a class="headerlink" href="#imports-and-variables" title="Permalink to this headline">¶</a></h3>
+<p>This section imports libraries and initalizes variables used in the solution below.</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-34" name="CodeChat-34" href="#CodeChat-34"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="CodeChat-35" name="CodeChat-35" href="#CodeChat-35"></a><span class="kn">import</span> <span class="nn">math</span>
+<a id="CodeChat-36" name="CodeChat-36" href="#CodeChat-36"></a>
+<a id="CodeChat-37" name="CodeChat-37" href="#CodeChat-37"></a><span class="n">node_order</span><span class="o">=</span> <span class="p">[]</span>
+<a id="CodeChat-38" name="CodeChat-38" href="#CodeChat-38"></a><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="CodeChat-39" name="CodeChat-39" href="#CodeChat-39"></a><span class="n">exits</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="CodeChat-40" name="CodeChat-40" href="#CodeChat-40"></a><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="CodeChat-41" name="CodeChat-41" href="#CodeChat-41"></a> 
+<a id="CodeChat-42" name="CodeChat-42" href="#CodeChat-42"></a> 
+</pre></div>
+</div>
+</section>
+<section id="read-in-the-data">
+<h3>Read in the data<a class="headerlink" href="#read-in-the-data" title="Permalink to this headline">¶</a></h3>
+<p>Auto-generated code below aims at helping you parse
+the standard input according to the problem statement.</p>
+<p>n: the total number of nodes in the level, including the gateways</p>
+<p>l: the number of links</p>
+<p>e: the number of exit gateways</p>
+<p>This section parses in the input data it keeps the connections of the graph sorted into a list</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-52" name="CodeChat-52" href="#CodeChat-52"></a><span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+<a id="CodeChat-53" name="CodeChat-53" href="#CodeChat-53"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+</pre></div>
+</div>
+<div class="CodeChat-indent" style="margin-left:2.0em;"><p>n1: N1 and N2 defines a link between these nodes</p>
+</div><div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-75" name="CodeChat-75" href="#CodeChat-75"></a>    <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+<a id="CodeChat-76" name="CodeChat-76" href="#CodeChat-76"></a>
+<a id="CodeChat-77" name="CodeChat-77" href="#CodeChat-77"></a>    <span class="k">if</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">d</span> <span class="ow">and</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<a id="CodeChat-78" name="CodeChat-78" href="#CodeChat-78"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+<a id="CodeChat-79" name="CodeChat-79" href="#CodeChat-79"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+<a id="CodeChat-80" name="CodeChat-80" href="#CodeChat-80"></a>    <span class="k">elif</span> <span class="n">n1</span> <span class="ow">in</span> <span class="n">d</span> <span class="ow">and</span> <span class="n">n2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<a id="CodeChat-81" name="CodeChat-81" href="#CodeChat-81"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+<a id="CodeChat-82" name="CodeChat-82" href="#CodeChat-82"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">n1</span><span class="p">]</span>
+<a id="CodeChat-83" name="CodeChat-83" href="#CodeChat-83"></a>    <span class="k">elif</span> <span class="n">n1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span> <span class="ow">and</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+<a id="CodeChat-84" name="CodeChat-84" href="#CodeChat-84"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+<a id="CodeChat-85" name="CodeChat-85" href="#CodeChat-85"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">n2</span><span class="p">]</span>
+<a id="CodeChat-86" name="CodeChat-86" href="#CodeChat-86"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="CodeChat-87" name="CodeChat-87" href="#CodeChat-87"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span>
+<a id="CodeChat-88" name="CodeChat-88" href="#CodeChat-88"></a>        <span class="n">d</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span>
+<a id="CodeChat-89" name="CodeChat-89" href="#CodeChat-89"></a> 
+</pre></div>
+</div>
+<p>an example debug message for the system</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-75" name="CodeChat-75" href="#CodeChat-75"></a>    <span class="c1">#print(&quot;Debug messages &quot; + str(d), file=sys.stderr, flush=True)</span>
+<a id="CodeChat-76" name="CodeChat-76" href="#CodeChat-76"></a>
+<a id="CodeChat-77" name="CodeChat-77" href="#CodeChat-77"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<a id="CodeChat-78" name="CodeChat-78" href="#CodeChat-78"></a>    <span class="n">ei</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>  <span class="c1"># the index of a gateway node</span>
+<a id="CodeChat-79" name="CodeChat-79" href="#CodeChat-79"></a>    <span class="n">exits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ei</span><span class="p">)</span>
+<a id="CodeChat-80" name="CodeChat-80" href="#CodeChat-80"></a>    <span class="c1">#print(&quot;Debug messages &quot; + str(input()), file=sys.stderr, flush=True)</span>
+</pre></div>
+</div>
+</section>
+<section id="the-game-loop">
+<h3>The Game Loop<a class="headerlink" href="#the-game-loop" title="Permalink to this headline">¶</a></h3>
+<p>This is the loop where the game is played.
+The input for the where the virus node is traveling to is given and the solution is generated as the game plays out.</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-90" name="CodeChat-90" href="#CodeChat-90"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="CodeChat-91" name="CodeChat-91" href="#CodeChat-91"></a>    <span class="n">si</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>  <span class="c1"># The index of the node on which the Bobnet agent is positioned this turn</span>
+<a id="CodeChat-92" name="CodeChat-92" href="#CodeChat-92"></a>
+<a id="CodeChat-93" name="CodeChat-93" href="#CodeChat-93"></a>    <span class="n">node_order</span><span class="o">=</span> <span class="p">[]</span>
+<a id="CodeChat-94" name="CodeChat-94" href="#CodeChat-94"></a>    <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="CodeChat-95" name="CodeChat-95" href="#CodeChat-95"></a>    <span class="n">selected_exit</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="CodeChat-96" name="CodeChat-96" href="#CodeChat-96"></a>    <span class="n">neighbor</span><span class="o">=</span> <span class="kc">False</span>
+<a id="CodeChat-97" name="CodeChat-97" href="#CodeChat-97"></a> 
+</pre></div>
+</div>
+<p>The solution below closes the path to the exit node if it is directly adjacent, or randomly closes a different path if there isnt an exit node adjacent.</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-111" name="CodeChat-111" href="#CodeChat-111"></a> 
+<a id="CodeChat-112" name="CodeChat-112" href="#CodeChat-112"></a>    <span class="k">for</span> <span class="n">exit_node</span> <span class="ow">in</span> <span class="n">exits</span><span class="p">:</span>
+<a id="CodeChat-113" name="CodeChat-113" href="#CodeChat-113"></a>
+<a id="CodeChat-114" name="CodeChat-114" href="#CodeChat-114"></a>        <span class="k">if</span> <span class="n">exit_node</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">si</span><span class="p">]:</span>
+<a id="CodeChat-115" name="CodeChat-115" href="#CodeChat-115"></a>            <span class="n">selected_exit</span> <span class="o">=</span> <span class="n">exit_node</span>
+<a id="CodeChat-116" name="CodeChat-116" href="#CodeChat-116"></a>            <span class="n">temp</span> <span class="o">=</span> <span class="n">si</span>
+<a id="CodeChat-117" name="CodeChat-117" href="#CodeChat-117"></a>            <span class="n">d</span><span class="p">[</span><span class="n">exit_node</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">si</span><span class="p">)</span>
+<a id="CodeChat-118" name="CodeChat-118" href="#CodeChat-118"></a>            <span class="n">d</span><span class="p">[</span><span class="n">si</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">exit_node</span><span class="p">)</span>
+<a id="CodeChat-119" name="CodeChat-119" href="#CodeChat-119"></a>            <span class="n">neighbor</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="CodeChat-120" name="CodeChat-120" href="#CodeChat-120"></a>            <span class="k">break</span>
+<a id="CodeChat-121" name="CodeChat-121" href="#CodeChat-121"></a>
+<a id="CodeChat-122" name="CodeChat-122" href="#CodeChat-122"></a>    <span class="k">if</span> <span class="n">neighbor</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+<a id="CodeChat-123" name="CodeChat-123" href="#CodeChat-123"></a>            <span class="n">temp</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">si</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="CodeChat-124" name="CodeChat-124" href="#CodeChat-124"></a>            <span class="n">selected_exit</span> <span class="o">=</span> <span class="n">si</span>
+<a id="CodeChat-125" name="CodeChat-125" href="#CodeChat-125"></a>            <span class="n">d</span><span class="p">[</span><span class="n">si</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<a id="CodeChat-126" name="CodeChat-126" href="#CodeChat-126"></a>            <span class="n">d</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">si</span><span class="p">)</span>
+<a id="CodeChat-127" name="CodeChat-127" href="#CodeChat-127"></a>
+<a id="CodeChat-128" name="CodeChat-128" href="#CodeChat-128"></a>
+<a id="CodeChat-129" name="CodeChat-129" href="#CodeChat-129"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">selected_exit</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
+<a id="CodeChat-130" name="CodeChat-130" href="#CodeChat-130"></a> 
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>This is an image of the most complex test case with the program passing the case.</p>
+<div class="code fenced-code highlight-python notranslate"><div class="highlight"><pre><span></span><a id="CodeChat-116" name="CodeChat-116" href="#CodeChat-116"></a> 
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="dfs_passing.png"><img alt="dfs_passing.png" src="dfs_passing.png" style="width: 95%;" /></a>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Coding with Reflection - Death-First Search</a><ul>
+<li><a class="reference internal" href="#solution-method">Solution Method</a><ul>
+<li><a class="reference internal" href="#imports-and-variables">Imports and Variables</a></li>
+<li><a class="reference internal" href="#read-in-the-data">Read in the data</a></li>
+<li><a class="reference internal" href="#the-game-loop">The Game Loop</a></li>
+<li><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Introduction to Sphinx</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sam1123_codechat_intro.py"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Introduction to Sphinx"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Project Name version 0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding with Reflection - Death-First Search</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Author.
+      Last updated on Feb, 21, 2022.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

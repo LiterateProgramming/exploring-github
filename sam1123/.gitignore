@@ -1,0 +1,3 @@
+# ignore codechat_config.yaml and conf.py
+codechat_config.yaml
+conf.py
