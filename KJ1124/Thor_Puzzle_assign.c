@@ -31,7 +31,6 @@ using namespace std;
 Provided Code
 --------------
 These are the functions and variables that are also provided to the developer when you begin the coding game.
-
 */
 int main() 
 // **beginning bracket**
@@ -41,15 +40,12 @@ int main()
     // the Y coordinate position of the light of power
     int light_y; 
     // Thor's starting position at X
-    int initial_tx; 
+    int initial_thor_x; 
     // Thor's starting position at Y
-    int initial_ty;
+    int initial_thor_y;
     // The cin.ignore() function is used to ignore characters that may not belong in your input buffer
-    cin >> light_x >> light_y >> initial_tx >> initial_ty; cin.ignore();
-// .. note::
-//  
-//  should give file "cpp" extension as visual studio code and other editors pick it up as C
-//
+    cin >> light_x >> light_y >> initial_thor_x >> initial_thor_y; cin.ignore();
+
     // This while statement is the beginning of the beginning of the game loop and it allows causes all of your test cases to run
     while (1) {
         int remaining_turns; 
@@ -57,13 +53,16 @@ int main()
         cin >> remaining_turns; cin.ignore();
 
 /*
-Diagram
+Diagrams
 ---------
 
 .. image:: ThorPwr.jpg
 
-
 **This a diagram of Thor at his starting postion. The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of Thor as he moves within the boundary conditions.** 
+
+.. image:: GameInfo.jpg
+
+**This is the games console output and is located underneath the image of Thor moving as he moves with each test case. It shows Thor's position and the light position as he moves across the board. This also shows the amount of energy consumption is being utilized to get to where you are making Thor travel. Both of your X and Y coordinates should either increment or decrement based on the postion of Thor in relation to the light of power.**
 
 Variables
 ----------
@@ -77,48 +76,43 @@ The directions below are the variables used to output the direction in which you
 *       SW (South West) 
 *       W (West)
 *       NW (North West)
-*/
-/* 
+ 
 Thor's Movement
 ----------------
+.. image:: XYgraph.jpg
 
-In this case the light of power at the X and Y coordinates are greater than Thor's initial condition so 2 if condition statements have to be implemented. Thor's initial X and Y conditions must be incremented so he can move in a diagonal direction without going out of bounds or repositioning from the light of power.
-Diagram
----------
+**This image shows the XY cooridinate graph as it is represented in this program. The arrows show how the coordinates with either increase or decrease based on the direction Thor is moving towards in.**
 
-.. image:: ThorPwr2.jpg
+In this case the light of power at the X and Y coordinates are greater than Thor's initial condition so, two if condition statements must to be implemented. Futhermore, the Y coordinate values increase as you go South and the X coordinates vale increase as you go further East. Thor's initial X and Y conditions must be incremented so he can move in the South East without going pass the MAX boundary for both the X and Y parameters.
 
-
-// .. note::
-//  
-//  Y coordinates(value) increase as you go in the South direction & X coordinates increase as you go further East. Thor's Y and X position need to be incremented as he moves in the SouthEast direction. The values are incremented so that Thor does not go past the MAX boundary for both x and y parameters.
-//  
         */
-        if ((light_y > initial_ty) && (light_x > initial_tx))
+        if ((light_y > initial_thor_y) && (light_x > initial_thor_x))
         {
             cout << "SE" << endl;
-            initial_tx++;
-            initial_ty++;
+            initial_thor_x++;
+            initial_thor_y++;
             }
-/* Based on the compass it can be determined that Thor will travel E (East).The light_x is the position of the light of power  and initial_tx is Thor's starting position in the X-coordinate plane. The postion of the light of power is is going in the positive direction and it greater than Thor's starting postion so a condition statement is created that if this is the case travel East.
+/* Based on the compass it can be determined that Thor will travel E (East).The light_x is the position of the light of power  and initial_thor_x is Thor's starting position in the X-coordinate plane. The postion of the light of power is is going in the positive direction and it greater than Thor's starting postion so a condition statement is created that if this is the case travel East.
         */
-        else if (light_x > initial_tx) {
+        else if (light_x > initial_thor_x) {
             cout << "E" << endl;
+            initial_thor_x++;
             }
-/* Thor will travel N (North) since the light of power is above his location and it is in the positive direction .The light_y is the position of the light of power and initial_ty is Thor's starting position in the Y-coordinate plane.
+/* Thor will travel N (North) since the light of power is above his location and it is in the positive direction .The light_y is the position of the light of power and initial_thor_y is Thor's starting position in the Y-coordinate plane.
         */
-        else if (light_y < initial_ty) {
+        else if (light_y < initial_thor_y) {
             cout << "N" << endl;
+            initial_thor_y--;
             }
-/* In this instance the light of power is in the negative Y direction of Thor's position. It is also at an angle which means Thor must move in an diagonal direction so that he does not run out of energy. He will travel diagional because of the increment then straight.
+/* Based on the if statement for the South East direction, a comparison is made testing whether my y-value and x-value of the light power is greater than Thor's position, based on that outcome the code will go through the else-if statements.If both conditions apply, then SW would be the direction that Thor will move and this is the reason for the one variable increment.He will travel diagional because of the increment then straight.
         */
-        else if (light_y > initial_ty) {
+        else if (light_y > initial_thor_y) {
             cout << "SW" << endl;
-            initial_ty++;
+            initial_thor_y++;
             // *Positive increment here so that Thor does not run out of bounds.*
             }
         // This else if statement is so that Thor will travel West after incrementing to the point where the light of power is equal to Thor's initial position.
-        else if (light_x < initial_tx) {
+        else if (light_x < initial_thor_x) {
             cout << "W" << endl;
             }
     }
