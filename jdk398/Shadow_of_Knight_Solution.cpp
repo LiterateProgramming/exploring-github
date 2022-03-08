@@ -142,26 +142,28 @@ int main()
                 batx -= (batx - lft_lim)/2;
             }
         }
-        // Below is an example of one of my boolean operations before I found my final solution. I looked for the exact string for each possible input (U, UR, R, L...). This was not the best way to do this because it took up way too much space. As seen above, using the find feature of the string class was much more effective.
-        //
-        // .. code::
-        // 
-        //  else if(bomb_dir == "UR"){ 
-        //      lft_lim = cur_batx-1;
-        //      lwr_lim = cur_baty+1;
-        // 
-        //      batx += (rgt_lim - batx)/2;
-        // 
-        //      if(baty == 1){
-        //          baty = 0;
-        //      }
-        //      else{
-        //          baty -= (baty - upr_lim)/2;
-        //      }
-        //  }
-        // 
+        
         // Finally The output is a simple cout of the two coordinates that we calculated.
         // the location of the next window Batman should jump to.
         cout << batx << " " << baty << endl;
     }
 }
+// 
+// Below is an example of one of my boolean operations before I found my final solution. I looked for the exact string for each possible input (U, UR, R, L...). This was not the best way to do this because it took up way too much space. As seen above, using the find feature of the string class was much more effective.
+//
+// .. code::
+// 
+//  else if(bomb_dir == "UR"){ 
+//      lft_lim = cur_batx-1;
+//      lwr_lim = cur_baty+1;
+// 
+//      batx += (rgt_lim - batx)/2;
+// 
+//      if(baty == 1){
+//          baty = 0;
+//      }
+//      else{
+//          baty -= (baty - upr_lim)/2;
+//      }
+//  }
+// 
