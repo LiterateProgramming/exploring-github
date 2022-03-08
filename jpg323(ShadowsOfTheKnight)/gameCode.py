@@ -1,11 +1,11 @@
 # ***************************
 # Shadows of the Night - Ep1
 # ***************************
-# .. note:: A short summary of the game here would be helpful. In the Goal_ section, you mention a bomb, a grid, and jumping, but there's no context. Adding a few sentences about Batman trying to find a defuse a bomb in an apartment building would be helpful.
 #
 # The purpose of this program is to solve the puzzle: `SHADOWS OF THE KNIGHT - EPISODE 1 <https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1>`_,
 # from the educational website `codingames.com <https://www.codingame.com/home>`_.
 #
+# In the game there is a grid of windows for an apartment building and one of those windows has a bomb in it. The game ends when the user arrives at the bomb. The user can jump to any window in the grid by changing their x and y coordinates, but are only given the direction in which the bomb is in relation to their current position.
 #
 # Goal
 # ====
@@ -13,21 +13,20 @@
 #
 # You are given the size of the grid, the starting location and direction of the bomb. The number of jumps you are allowed to make is limited and the game will provide the direction in which the target is.
 #
+#
 # Inputs
 # ======
-# .. note:
-#
-#   I like this explanation and the list of variables!
-#
 # Below are variables given by the game and are different for various test cases.
 #
-#   * **w**: width of the building. (int)
-#   * **h**: height of the building. (int)
-#   * **n**: maximum number of turns the useer has to make it to the bomb. (int)
-#   * **bomb_dir**: The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL). The letters stand for Up, Down, Left, and Right. However, here it is just initialized as "AB" for organization. (string)
+#   * **w**: width of the building. Provided only once. (int)
+#   * **h**: height of the building. Provided only once. (int)
+#   * **n**: maximum number of turns the user has to make it to the bomb. Provided only once. (int)
+<<<<<<< HEAD
+#   * **bomb_dir**: The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL). Provided each round. The letters stand for Up, Down, Left, and Right. However, here it is just initialized as "AB" for organization. (string)
 #
-# .. note:: This is a bit confusing -- some of the inputs are provided only once, at the beginning of the game, which other are provided each round. Distinguish between them.
 
+>>>>>>> Homework
+ 
 import sys
 import math
 w, h = [int(i) for i in input().split()]
@@ -36,10 +35,6 @@ x0, y0 = [int(i) for i in input().split()]
 bomb_dir = "AB"
 # Approach
 # ========
-# .. note::
-#
-#   You don't need a line block (the ``|`` character) here, or at line 53-54.
-#
 # | The approach we are taking is based on a binary search tree. We will check what *directions* are in the **bomb_dir** string and write if-statements for each case.
 #
 # The steps are as follows:
@@ -52,11 +47,7 @@ bomb_dir = "AB"
 #
 # |
 # | We start by getting the highest possible value at which the bomb can be vertically and horizontally. Since the grid starts at 0 we get this bottom right coordinate by subtracting 1 from the max width and height.
-#
-# .. note::
-#
-#   Good explanation!
-
+# 
 high_x = w-1
 low_x = 0
 
@@ -64,26 +55,17 @@ high_y = h-1
 low_y=0
 # We will repeat the following steps until the game forcibly exits for us. That happens when the player is in the same location as the bomb.
 while True:
-    # .. note:: Put the comment below on its own line -- it doesn't render well as-is.
-    bomb_dir = input()  # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+    bomb_dir = input()
+    # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
     #
-    # .. note:: Make this a nice title or something -- perhaps **VERTICAL**.
-    #
-    ## VERTICAL
+    # **VERTICAL**
     # Here we check if the bomb is located down or up from the player. If it is Up, the highest possible value for y will decrease since the y values increase downwards. Similarly, if the bomb is Down, the lowest y value increases.
-    #
-    # .. note::
-    #
-    #   This is a bit hard to understand, but the explanation is still helpful. I'd suggest referring to the example below to help -- "see the example below" or something similar.
     if "D" in bomb_dir:
         low_y = y0+1
     elif "U" in bomb_dir:
         high_y = y0-1
     # To calculate the new y value, we go to the middle of the remaining possible cells. We find the middle by dividing the difference by 2 and increasing that value by the minimum possible value to shift the value to the remaining possible cells.
-    #
-    # .. note::
-    #
-    #   Explain the use of ``..``, which is important here.
+	#
     y0 = low_y + (high_y-low_y) // 2
 #
 # .. image:: img1.png
@@ -98,10 +80,7 @@ while True:
     x0 = low_x + (high_x-low_x) // 2
     # We follow the same process for the x values and eventually we will end up at the bomb.
     ## Handling 0s
-    # .. note::
-    #
-    #   Explain debug output vs normal output. Also, have a section on outputs that details what these are.
-    print("x0, y0:", file=sys.stderr, flush=True)
+    print("x0, y0:", file=sys.stderr, flush=True) # flushing the buffer prevents this output from counting as an attempt to "jump"
     print(x0, y0, file=sys.stderr, flush=True)
     # This is how the game tells us to make our jump to coordinates the x0 and y0 we just calculated.
     print(x0, y0)
