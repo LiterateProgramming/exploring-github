@@ -29,20 +29,12 @@
 // ---------------------
 //
         string[] inputs = Console.ReadLine().Split(' ');
-        // The X position of the light of power
         int lightX = int.Parse(inputs[0]); 
-        // The Y position of the light of power
         int lightY = int.Parse(inputs[1]); 
-        // Thor's starting X position
         int initialTX = int.Parse(inputs[2]); 
-        // Thor's starting Y position
         int initialTY = int.Parse(inputs[3]); 
-        // The first two variables, ``lightX`` and ``lightY``, are used to set where the coordinates of the light orb's location for each new level of the game. I then defined ``initialTX`` and ``initialTY`` to be Thor's initial location. When first designing this program, I had two addtional variables that would update to thor's new location, but I realized when working through this that the ``initialTX`` and ``initialTY`` variables can be used for both functions.
-        string directionX = "";
-        // Blank X direction string to fill with direction thor will move in.
-        string directionY = "";
-        // Blank Y direction string to fill with direction thor will move in.
-        // These variables are used to read in the cardinal direction given by the player of the game.
+        // The first two variables, ``lightX`` and ``lightY``, are used to set where the coordinates of the light orb's location is for each new level of the game. The next two variables are defined as ``initialTX`` and ``initialTY`` to be Thor's initial location. When first designing this program, I had two addtional variables that would update to thor's new location, but I realized when working through this that that would be unneeded. Instead of having variables that are only used one time to set an initial location, they can be reused for Thor's updated location as well. In hindsight for this solution, I should have changed the names of these variables to better illustrate their funcionality. 
+        
 //
 // ****************
 // Solution
@@ -54,9 +46,9 @@
             {
                 // The remaining amount of turns Thor can move. Do not remove this line.
                 int remainingTurns = int.Parse(Console.ReadLine()); 
-                // Blank X direction string to fill with direction thor will move in.
+                // directionX is a string used to fill with the cardinal direction thor will move in horizontally.
                 string directionX = "";
-                // Blank Y direction string to fill with direction thor will move in.
+                // directionY is a string used to fill with the cardinal direction thor will move in vertically. 
                 string directionY = "";
                 // I used if/else statements to work through each cardinal direction and insert a value for each of the strings above. These values are then used in the function below to move Thor in the user's desired direction.
                 //
