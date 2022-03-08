@@ -88,7 +88,7 @@ int main()
     // The input that the game gives the player is the general direction of the bomb. These directions are listed in the code, we'll use this to find the bomb.
 
     while (1)   {
-        //The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
+        // The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
         // Each direction is specified by a letter, U D R L as Up Down Right and Left respectively. if there's only one letter (like U) then that means you have the other direction correct, and only need to move in that one direction. Two letters means it is on some diagonal and you need to change both coordinates. 
         // 
         // **Important:** the coordinates are set up with zeros in the top left and max height and width in the bottom right. So, while I know it is confusing it's important to understand that when I say Up, I mean smaller coordinates and when I say Down I mean larger coordinates.
@@ -142,7 +142,7 @@ int main()
                 batx -= (batx - lft_lim)/2;
             }
         }
-        // Below is an example of one of my boolean operations before I found my final solution. I looked for the exact string for each possible input (U, UR, R, L...). This was not the best way to do this because it took up way too much space.
+        // Below is an example of one of my boolean operations before I found my final solution. I looked for the exact string for each possible input (U, UR, R, L...). This was not the best way to do this because it took up way too much space. As seen above, using the find feature of the string class was much more effective.
         //
         // .. code::
         // 
