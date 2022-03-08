@@ -21,12 +21,8 @@
 #   * **w**: width of the building. Provided only once. (int)
 #   * **h**: height of the building. Provided only once. (int)
 #   * **n**: maximum number of turns the user has to make it to the bomb. Provided only once. (int)
-<<<<<<< HEAD
 #   * **bomb_dir**: The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL). Provided each round. The letters stand for Up, Down, Left, and Right. However, here it is just initialized as "AB" for organization. (string)
-#
-
->>>>>>> Homework
- 
+# 
 import sys
 import math
 w, h = [int(i) for i in input().split()]
