@@ -13,6 +13,7 @@ Solutions will appear here as they are merged.
 
     abp168/shadows_of_knight_ep1.py
     prl83/thor.py
+    lw1551/Power of Thor intro.cs
     anw678(TheDescent)/TheDescentPart2.py
 
 
