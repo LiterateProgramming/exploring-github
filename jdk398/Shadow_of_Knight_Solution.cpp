@@ -1,9 +1,9 @@
-/* 
-*********************
-Shadows of the Knight
-*********************
+/*
+***********************************
+Joe Kennedy - Shadows of the Knight
+***********************************
 
-This solves the `shadows of the knight <https://www.codingame.com/ide/puzzle shadows-of-the-knight-episode-1>`_ codeingame problem. 
+This solves the `shadows of the knight <https://www.codingame.com/ide/puzzle shadows-of-the-knight-episode-1>`_ codeingame problem.
 
 Problem Solution
 ================
@@ -14,22 +14,22 @@ Problem Solution
 This problem requires the user to code a process to get batman to a bomb in a building. The building is represented as a 2D array, with position (0,0) being in the top left, and position (w,h) being in the bottom right. In the example picture above batman is in the bottom left quadrant of the building and the bomb is the red circle in the top right of the bulding.
 
 The output that we give the game is the next location that we would like to move. For
-example, in the picture above the bomb is far up and to the right, so the next location 
-we would want to choose would be to a location like (10,2). 
+example, in the picture above the bomb is far up and to the right, so the next location
+we would want to choose would be to a location like (10,2).
 
-Something that also should be noted about the above picture are the two red lines flanking Batman. These are a graphical representation of what I call "limits". Limits are essentially coordinates, either x or y, that Batman is restricted from going past. So in a future move Batman will use the limits defined before as an outer bounds to help calculate his next move. We decide limits based on the direction that the game gives us for the bomb. For our example above, because the bomb is above and to the right, we know for sure that it is not anywhere below or to the left of our current position. by using this method repeatedly we cut down the search area until we can make our final move with certainty. 
+Something that also should be noted about the above picture are the two red lines flanking Batman. These are a graphical representation of what I call "limits". Limits are essentially coordinates, either x or y, that Batman is restricted from going past. So in a future move Batman will use the limits defined before as an outer bounds to help calculate his next move. We decide limits based on the direction that the game gives us for the bomb. For our example above, because the bomb is above and to the right, we know for sure that it is not anywhere below or to the left of our current position. by using this method repeatedly we cut down the search area until we can make our final move with certainty.
 
-For this solution I use the find function of the string class that the game requires us to import. we will be checking this against the class defined value npos. 
+For this solution I use the find function of the string class that the game requires us to import. we will be checking this against the class defined value npos.
 
  .. code::
 
     if (bomb_dir.find("R") != string::npos)
 
-What this snippet of code is doing is trying to find the character R in the string supplied, if what it returns is not equal to the value defined as essentially "sub character not found", then the if receives a true and we go into the if's code. 
+What this snippet of code is doing is trying to find the character R in the string supplied, if what it returns is not equal to the value defined as essentially "sub character not found", then the if receives a true and we go into the if's code.
 
 Each section is a separate if statement, so that if the program finds R, it will still look for U or D to see if the direction is diagonal.
 
-Code 
+Code
 ====
 The following will be the source code for the solution, along with some explanation and reasoning behind the solution process.
 
@@ -50,18 +50,18 @@ using namespace std;
 int main()
 {
     // The following variables are one time inputs for the game. ``h`` and ``w`` determine the height and width of the building that Batman is scaling respectively.
-    int w; 
-    int h; 
+    int w;
+    int h;
     cin >> w >> h; cin.ignore();
     // ``n`` is the maximum number of turns before game over. (we use this very little)
-    int n; 
+    int n;
     cin >> n; cin.ignore();
     // ``x0`` and ``y0`` represent the initial coordinates of Batman.
     int x0;
     int y0;
     cin >> x0 >> y0; cin.ignore();
 
-    
+
 // My Code
 // -------
     // The location of batman, also count, which is just used to check if we are in the first round, this is for some levels it is important to start in the right position.
@@ -81,7 +81,7 @@ int main()
     // These are the variables that I send to the output to pick batman's next location.
     int batx = x0;
     int baty = y0;
-    // 
+    //
 // ---------
 // Game Loop
 // ---------
@@ -89,18 +89,18 @@ int main()
 
     while (1)   {
         // The direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL), and the input argument from the website
-        // Each direction is specified by a letter, U D R L as Up Down Right and Left respectively. if there's only one letter (like U) then that means you have the other direction correct, and only need to move in that one direction. Two letters means it is on some diagonal and you need to change both coordinates. 
-        // 
+        // Each direction is specified by a letter, U D R L as Up Down Right and Left respectively. if there's only one letter (like U) then that means you have the other direction correct, and only need to move in that one direction. Two letters means it is on some diagonal and you need to change both coordinates.
+        //
         // **Important:** the coordinates are set up with zeros in the top left and max height and width in the bottom right. So, while I know it is confusing it's important to understand that when I say Up, I mean smaller coordinates and when I say Down I mean larger coordinates.
-        string bomb_dir; 
+        string bomb_dir;
         cin >> bomb_dir; cin.ignore();
 
         cur_batx = batx;
         cur_baty = baty;
-        
+
         // This "if block" should only run if the game is in the **first** round. This is for the second to last level because without it the program will fail, however even with this the program will pass on all other levels
         //
-        // Unfortunately I couldn't think of another way to solve this problem without this quick fix. 
+        // Unfortunately I couldn't think of another way to solve this problem without this quick fix.
         if (count == 0){
             batx = 0;
             baty = h/5;
@@ -142,23 +142,23 @@ int main()
                 batx -= (batx - lft_lim)/2;
             }
         }
-        
+
         // Finally The output is a simple cout of the two coordinates that we calculated.
         // the location of the next window Batman should jump to.
         cout << batx << " " << baty << endl;
     }
 }
-// 
+//
 // Below is an example of one of my boolean operations before I found my final solution. I looked for the exact string for each possible input (U, UR, R, L...). This was not the best way to do this because it took up way too much space. As seen above, using the find feature of the string class was much more effective.
 //
 // .. code::
-// 
-//  else if(bomb_dir == "UR"){ 
+//
+//  else if(bomb_dir == "UR"){
 //      lft_lim = cur_batx-1;
 //      lwr_lim = cur_baty+1;
-// 
+//
 //      batx += (rgt_lim - batx)/2;
-// 
+//
 //      if(baty == 1){
 //          baty = 0;
 //      }
@@ -166,4 +166,4 @@ int main()
 //          baty -= (baty - upr_lim)/2;
 //      }
 //  }
-// 
+//
