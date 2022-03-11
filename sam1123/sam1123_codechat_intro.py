@@ -30,13 +30,10 @@
 # 
 # This section imports libraries and initalizes variables used in the solution below. 
 #
-# .. note::
-#   Should comment what the initilzed variables ``node_order``, ``links``, ``exits``, and ``d`` are used for in this solution
-#
-# Node_order stores the nodes as they are read in from the program
-# links stores the links to those nodes as they are read in
-# exits stores which nodes are exits. 
-# d is a dictionary to store the nodes with there links. 
+# Node_order stores - the nodes as they are read in from the program
+# links stores -  the links to those nodes as they are read in
+# exits stores  - which nodes are exits. 
+# d is a dictionary - to store the nodes with there links. 
 import sys
 import math
 
@@ -49,21 +46,18 @@ d = {}
 # ================
 # Read in the data
 # ================
-# Auto-generated code below aims at helping you parse
-# the standard input according to the problem statement.
 # 
-# n: the total number of nodes in the level, including the gateways
-# 
-# l: the number of links
-# 
-# e: the number of exit gateways
-#
-# .. note::
-#   Can include information on what to expect as input and how it is formatted in the problem
-#
 # This section parses in the input data it keeps the connections of the graph sorted into a list
 # 
-# The input is given as links to the nodes. 
+# The input is given as links to the nodes. The connections are read one at a time based on what turn of the game it is. 
+#
+# :n: the total number of nodes in the level, including the gateways
+# 
+# :l: the number of links
+# 
+# :e: the number of exit gateways
+#
+#
 #  
 n, l, e = [int(i) for i in input().split()]
 for i in range(l):
