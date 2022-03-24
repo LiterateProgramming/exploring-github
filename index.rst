@@ -16,6 +16,7 @@ Solutions will appear here as they are merged.
     prl83/thor.py
     lw1551/Power of Thor intro.cs
     anw678(TheDescent)/TheDescentPart2.py
+    zws40/Intro_to_CodeChat.c
 
 
 Supporting files

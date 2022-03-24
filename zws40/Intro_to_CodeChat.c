@@ -1,7 +1,7 @@
-// ====================
-// Solving Mars Lander
-// ====================
-
+// *****************************
+// Zach S. - Solving Mars Lander
+// *****************************
+//
 // This document will walk you through solving the Mars Lander puzzle on `codingame.com <https://www.codingame.com/ide/puzzle/mars-lander-episode-1>`_
 
 // .. image:: mars_lander_ss_png.png
@@ -38,7 +38,7 @@
 // #. The elevation and speed are tightly linked. You MUST make sure the lander is not traveling to quickly when low in elevation, but also must have enough speed to reach the ground before running out of fuel
 //
 // * The fuel is very limited, limited enough that if you spend to much time not on the ground, you will lose all thrust and slam into the ground
-// * The elevation is key for speed control. Once at a certain speed at a certain elevation, the full force thrust of the lander simply will not slow you down enough to stop from crashing into the ground 
+// * The elevation is key for speed control. Once at a certain speed at a certain elevation, the full force thrust of the lander simply will not slow you down enough to stop from crashing into the ground
 //
 // *For this puzzle, all we need to worry about is the Y coordinate of the rocket, the vertical speed, the fuel level, and the thruster power.*
 //
@@ -62,7 +62,7 @@
 
 
 int main()
-{    
+{
     // the number of points used to draw the surface of Mars.
     int surface_n;
     scanf("%d", &surface_n);
@@ -98,7 +98,7 @@ int main()
 //
 // The else statements attached to the two nested if else conditions are set to make the thruster level 1. Setting the thruster to the lowest level when we are not at our target speed helps us maintain said speed.
 
-    
+
         if(Y > 1250)
         {
             if(v_speed < -25)
