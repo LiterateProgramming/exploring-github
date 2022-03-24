@@ -28,6 +28,7 @@ Instead of offering puzzle solutions, these files define the Sphinx project used
     conf.py
     codechat_config.yaml
     .gitignore
+    readthedocs.yml
 
 
 Search
