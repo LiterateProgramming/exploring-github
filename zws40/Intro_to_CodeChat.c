@@ -68,7 +68,6 @@ int main()
     scanf("%d", &surface_n);
     for (int i = 0; i < surface_n; i++) {
         // X coordinate of a surface point. (0 to 6999)
-    
         int land_x;
         // Y coordinate of a surface point. By linking all the points together in a sequential fashion, you form the surface of Mars.
         int land_y;
@@ -95,16 +94,16 @@ int main()
 //
 //
 //
-    // The solution begins with an if else statement that looks at the Y altitude. If the lander is more than 1250 meters high, it will retain a speed of -25 m/s as to not gain too much speed and lose control.
+// The solution begins with an if else statement that looks at the Y altitude. If the lander is more than 1250 meters high, it will retain a speed of -25 m/s as to not gain too much speed and lose control.
 //
-    // The else statements attached to the two nested if else conditions are set to make the thruster level 1. Setting the thruster to the lowest level when we are not at our target speed helps us maintain said speed.
+// The else statements attached to the two nested if else conditions are set to make the thruster level 1. Setting the thruster to the lowest level when we are not at our target speed helps us maintain said speed.
 
     
         if(Y > 1250)
         {
             if(v_speed < -25)
             {
-     // You use the printf function to choose your thruster strength on a level 0-4. The first number, or the zero you see, of the function can be ignored, while the second number is your thrust power selection
+                // You use the printf function to choose your thruster strength on a level 0-4. The first number, or the zero you see, of the function can be ignored, while the second number is your thrust power selection
                 printf("0 4\n");
             }
             else
@@ -112,8 +111,8 @@ int main()
                 printf("0 1\n");
             }
         }
-     // Once below 1250 meters, the else condition is set to run. This is because at this distance you need to begin slowing down as to not crash onto the ground.
-     // Though instead of -8 we could have used -1 for a guaranteed safe landing, we have to take fuel into account. -8 m/s is the slowing you can get to at our altitude of 1250 meters and still have enough fuel to make it to the ground.
+        // Once below 1250 meters, the else condition is set to run. This is because at this distance you need to begin slowing down as to not crash onto the ground.
+        // Though instead of -8 we could have used -1 for a guaranteed safe landing, we have to take fuel into account. -8 m/s is the slowing you can get to at our altitude of 1250 meters and still have enough fuel to make it to the ground.
         else
         {
             if(v_speed < -8)
