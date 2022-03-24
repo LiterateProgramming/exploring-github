@@ -77,8 +77,6 @@ for i in range(l):
         d[n1]=[n2]
         d[n2]=[n1]
 # 
-# .. note:: 
-#   Useful debug print out below
 #   
 # an example debug message for the system
     #print("Debug messages " + str(d), file=sys.stderr, flush=True)
@@ -104,9 +102,9 @@ while True:
 
 # The solution below closes the path to the exit node if it is directly adjacent, or randomly closes a different path if there isnt an exit node adjacent. 
 #
-# .. note::
-#   An explanation of the key/value stucture for dictionary ``d`` would be helpful for the reader to know how you're closing paths through a dictionary
-#
+#  A value in the key-value pair can be a number, a string, a list, a tuple, or even another dictionary. In fact, you can use a value of any valid type in Python as the value in the key-value pair.
+#  A key is accessed by dict[key] and the return is a  list of values for that key. 
+
     for exit_node in exits:
 
         if exit_node in d[si]:
