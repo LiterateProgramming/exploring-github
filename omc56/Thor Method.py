@@ -1,15 +1,16 @@
-# ************************
-# Gaming Solutions
-# ************************
+# *******************************
+# Gaming Solutions- By Star
+# *******************************
 #
-# Power of Thor - Episode 1 - By Star
-# =============================================
-# Hello, my name is Star. Today I am going through my solution and thought process for `Power of Thor-Episode 1 <https://www.codingame.com/training/easy/power-of-thor-episode-1>`_. This game is about getting Thor to his energy source, a spot where lighting will hit. 
+# Power of Thor - Episode 1
+# ===============================
+# Welcome everyone to my page. My name is Star and I will be walking through the game called Power of Thor. If you would like to see this game for yourself, `Power of Thor-Episode 1 <https://www.codingame.com/training/easy/power-of-thor-episode-1>`_. The goal of this game is getting Thor to his energy source, a spot where lighting will hit. 
 #
 # .. image:: Power_of_thor_pic_1.png
 #
 #
-# As you can see in the picture above, this game uses the xy plane, compass directions, and has boundries. For example, Thor's starting location is (1,1) and the light is located at (1,5). This means Thor needs to move South to get to the light. 
+# As you can see in the picture above, this game uses the xy plane, compass directions, and has boundries. It is key to notice how the xy plane is set up. the right is positive x and down is positive y. The red dotted square in the picutre above are the boundaries. The top left corner is our orgin. 
+# Now to get Thor to his lighting source we have to know Thor's starting location and the location of the lighting. For example, Thor's starting location is (1,1) and the light is located at (1,5). This means Thor needs to move South to get to the light. 
 # 
 #
 # .. contents:: Table of Contents
