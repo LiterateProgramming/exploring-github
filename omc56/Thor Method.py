@@ -53,25 +53,107 @@ while True:
 #   
 # Solution
 # --------------------
-# For my first try though this game I used C++. By the end I only got a 75% accuracy for the code once it was submitted. C++ is the langauge my degree has given me; however, since my teacher writes mostly in python, I decided to use python. 
+# For my first try though this game I used C++. By the end I only got a 75% accuracy for the code once it was submitted. C++ is the langauge my degree has given me; however, since my teacher writes mostly in python, I decided to use python. `Python <https://wiki.python.org/moin/BeginnersGuide>`_.
 #
-# Thinking It Through
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^
-# First off, taking a *step back* and drawing out the xy plane and the directions the are required was helpful. 
-# 
-#  .. image:: Power_of_thor_pic_2.png
-#  
-# However, without the original code telling me exactly what the directions did, I had no idea of knowing that the initial Thor position never changed. Keeping notes helped me track how past codes I wrote worked and didn’t work. Taking notes was helpful then just trying to type in code without much guidance. It will take me a while to look and gather before trying code. 
-# I started with trying to figure out Thor's position in comparison to light's position but did it have in common with directions.
+    # Thinking It Through
+    # ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        # First off, taking a *step back* and drawing out the xy plane and the directions the are required was helpful. If during the first round I used the correct directions for the xy plane. But with it mapped out similar to this I was eventually able to figure it out. 
+        # 
+        #  .. image:: Power_of_thor_pic_2.png
+        #  
+        # However, without the original code telling me exactly what the directions did, I had no idea of knowing that the initial Thor position never changed. Keeping notes helped me track how past codes I wrote worked and didn’t work. Taking notes was helpful then just trying to type in code without much guidance. It will take me a while to look and gather before trying code. 
+        # I started with trying to figure out Thor's position in comparison to light's position but did it have in common with directions.
+        #
+
+# game loop- From here
+while True:
+    remaining_turns = int(input())  # The remaining amount of turns Thor can move. Do not remove this line. 
+
+    # Write an action using print
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+
+    #
+    #| The above code gets the program to show us where Thor and the light start.
+    #
+# to here was all from the game. The next part was written by myself.
+
+    if initial_tx == light_x:  # if we are already on the correct x position
+        while initial_ty > light_y: 
+        # then check to see if thor is further down the y axis, if so then keep north
+        # until Light y and Thor's y are equal 
+            print("N")
+            initial_ty -= 1
+        while initial_ty < light_y:
+            # then check to see if thor is further up the y axis, if so then keep south
+            # until Light y and Thor's y are equal         
+            print ("S") 
+            initial_ty += 1
+
+    elif initial_ty == light_y:
+        while initial_tx > light_x: 
+        # then check to see if thor is further down the x axis, if so then keep north
+        # until Light y and Thor's y are equal 
+            print("W")
+            initial_tx -= 1
+        while initial_tx < light_x:
+            # then check to see if thor is further up the x axis, if so then keep south
+            # until Light y and Thor's y are equal         
+            print ("E") 
+            initial_tx += 1
+
+# This code worked for the following test cases:
+#   * Straight line
+#   * Up
 #
-# .. image:: Power_of_thor_pic_4.png
+# However the game play had,
 #
-# I started with a while loop but noticed it only worked for a straight line movement. Next i tried if loops. That just got messy. Last i tried a for loop, and incorprated Thor's position getting updated. 
+#       WARNING: your code did not read all available input before printing an instruction, your outputs will not be synchronized with the game's turnns and unexpected behavior may occur.
 #
-# .. image:: Power_of_thor_pic_5.png
-# .. image:: Power_of_thor_pic_6.png
+# This is probably because I played the testcases seprately instead of all together. 
 #
-# Errors in My Code
-# ^^^^^^^^^^^^^^^^^
-# Due to all the if statements I had and built in while loops with only work 75% of the time. When I have time I may go back and clean up this code to a similar form and able to work 100% of the time. 
+# That code was only when Thor's x or y was equal to Light's x or y respectfully. Now what if Neither of Thor's x or y is equal to Light's x or y respectfully? In this case we will have to look into either using NW, NE, SW, SE, or having thor move along the x axis then the y axis. 
+
+    if initial_tx > light_x: 
+        # remember when Thor x > light x then Thor needs to go W.
+        while initial_ty > light_y:
+            # This mean Thor needs to go N. 
+            # so together thor needs to go NW
+            print ("NW")
+            initial_tx -= 1
+            initial_ty -= 1
+        while initial_ty < light_y:
+            # this means Thor needs to go S.
+            # so the if statement plus this while loop means Thor needs to go SW
+            print ("SW")
+            initial_tx -= 1 # this will minus one from Thor's initial_tx so it updates as he walks/floats
+            initial_ty += 1 # this will add one to Thor's initial_ty so it updates as he walks/floats
+   
+    elif initial_tx < light_x: 
+        # remember when Thor x > light x then Thor needs to go E.
+        while initial_ty > light_y:
+            # This mean Thor needs to go N. 
+            # so together thor needs to go NE
+            print ("NE")
+            initial_tx += 1
+            initial_ty -= 1
+        while initial_ty < light_y:
+            # this means Thor needs to go S.
+            # so the if statement plus this while loop means Thor needs to go SE
+            print ("SE")
+            initial_tx += 1 # this will add one to Thor's initial_tx so it updates as he walks/floats
+            initial_ty += 1 # this will add one to Thor's initial_ty so it updates as he walks/floats
+   
+# After this part was added to the code, I pressed play all testcases and passed the following:
+#   * Straight line
+#   * Up
+#   * Easy Angle
+#   * Optimal Angle
+#
+# However the game play still had,
+#
+#       WARNING: your code did not read all available input before printing an instruction, your outputs will not be synchronized with the game's turnns and unexpected behavior may occur.
+#
+# End Result
+# ^^^^^^^^^^^^^^^
+# Durning the second try using Python, I was able to get a 100% on the code. 
 
