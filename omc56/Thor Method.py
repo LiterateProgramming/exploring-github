@@ -21,9 +21,35 @@
 #
 # Provided Code
 # ------------------
-# This game has a built in code for the directions that you can't see. After trail and error, I figured out that all it is doing is either increasing/decreasing x and/or y. It is **not** updating Thor's position. Which can cause him to go outside of the boundry. 
+# This game has a built in code for the directions that you can't see. After trail and error, I figured out that all it is doing is either increasing/decreasing x and/or y. It is **not** updating Thor's position. Which can cause him to go outside of the boundry. When you go outside the boundry it is game over. 
 #
-# .. image:: Power_of_thor_pic_3.png
+# 
+from re import X
+import sys
+import math
+
+# *Auto- generated code below aims to helping you parse the standard input according to the problem statement. Hint: you can use the debug stream to print initialTX and initialTY, if Thor seems not to follow your instructions.*
+ # **Light_x**: the X position of the light of power
+ #
+ # **Light_y**: the Y position of the light of power 
+ #
+ # **Initial_tx**: Thor's starting X position
+ #
+ # **Initial_ty**: Thor's starting Y position
+ #
+light_x, light_y, initial_tx, initial_ty = [int(i) for i in input().split()]
+
+# game loop
+while True:
+    remaining_turns = int(input())  # The remaining amount of turns Thor can move. Do not remove this line.
+
+    # Write an action using print
+    # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+
+
+    # A single line providing the move to be made: N NE E SE S SW W or NW
+    print("SE")
+
 #   
 # Solution
 # --------------------
