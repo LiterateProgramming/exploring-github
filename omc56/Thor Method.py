@@ -53,10 +53,10 @@ while True:
 #   
 # Solution
 # --------------------
-# My solution code is in C++. Please click `here <https://www.softwaretestinghelp.com/loops-in-cpp/#:~:text=Loops%20In%20C%2B%2B%201%20For%20Loop.%20The%20construct,...%205%20Infinite%20Loop.%20...%206%20Conclusion.%20>`_ if you are not familiar with it. 
+# For my first try though this game I used C++. By the end I only got a 75% accuracy for the code once it was submitted. C++ is the langauge my degree has given me; however, since my teacher writes mostly in python, I decided to use python. 
 #
-# First Try
-# ^^^^^^^^^^^^^^^^^
+# Thinking It Through
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^
 # First off, taking a *step back* and drawing out the xy plane and the directions the are required was helpful. 
 # 
 #  .. image:: Power_of_thor_pic_2.png
