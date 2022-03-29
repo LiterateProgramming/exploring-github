@@ -1,6 +1,6 @@
-# ***************************
-# Shadows of the Night - Ep1
-# ***************************
+# ********************************************
+# Shadows of the Night - Ep1 | by JP Gathings
+# ********************************************
 #
 # The purpose of this program is to solve the puzzle: `SHADOWS OF THE KNIGHT - EPISODE 1 <https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1>`_,
 # from the educational website `codingames.com <https://www.codingame.com/home>`_.
@@ -29,9 +29,10 @@ w, h = [int(i) for i in input().split()]
 n = int(input())  # maximum number of turns before game over.
 x0, y0 = [int(i) for i in input().split()]
 bomb_dir = "AB"
+
 # Approach
 # ========
-# | The approach we are taking is based on a binary search tree. We will check what *directions* are in the **bomb_dir** string and write if-statements for each case.
+# The approach we are taking is based on a binary search tree. We will check what *directions* are in the **bomb_dir** string and write if-statements for each case.
 #
 # The steps are as follows:
 #
@@ -41,8 +42,7 @@ bomb_dir = "AB"
 # * Jump
 # * Repeat
 #
-# |
-# | We start by getting the highest possible value at which the bomb can be vertically and horizontally. Since the grid starts at 0 we get this bottom right coordinate by subtracting 1 from the max width and height.
+# We start by getting the highest possible value at which the bomb can be vertically and horizontally. Since the grid starts at 0 we get this bottom right coordinate by subtracting 1 from the max width and height.
 # 
 high_x = w-1
 low_x = 0
@@ -53,8 +53,8 @@ low_y=0
 while True:
     bomb_dir = input()
     # the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
-    #
-    # **VERTICAL**
+    # |
+    # 
     # Here we check if the bomb is located down or up from the player. If it is Up, the highest possible value for y will decrease since the y values increase downwards. Similarly, if the bomb is Down, the lowest y value increases.
     if "D" in bomb_dir:
         low_y = y0+1
