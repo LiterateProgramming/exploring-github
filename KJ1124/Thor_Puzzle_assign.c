@@ -1,6 +1,6 @@
-// *******************
-// **Power of Thor**
-// *******************
+// *************************
+// Kaitlyn J - Power of Thor
+// *************************
 /*
 Use `this link <https://www.codingame.com/ide/puzzle/power-of-thor-episode-1>`_ to access the coding game.
 
@@ -32,15 +32,15 @@ Provided Code
 --------------
 These are the functions and variables that are also provided to the developer when you begin the coding game.
 */
-int main() 
+int main()
 // **beginning bracket**
 {
     // the X coordinate position of the light of power
     int light_x;
     // the Y coordinate position of the light of power
-    int light_y; 
+    int light_y;
     // Thor's starting position at X
-    int initial_thor_x; 
+    int initial_thor_x;
     // Thor's starting position at Y
     int initial_thor_y;
     // The cin.ignore() function is used to ignore characters that may not belong in your input buffer
@@ -48,7 +48,7 @@ int main()
 
     // This while statement is the beginning of the beginning of the game loop and it allows causes all of your test cases to run
     while (1) {
-        int remaining_turns; 
+        int remaining_turns;
         // This is the remaining amount of turns Thor can move. Do not remove this line.
         cin >> remaining_turns; cin.ignore();
 
@@ -58,7 +58,7 @@ Diagrams
 
 .. image:: ThorPwr.jpg
 
-**This a diagram of Thor at his starting postion. The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of Thor as he moves within the boundary conditions.** 
+**This a diagram of Thor at his starting postion. The red arrows are pointing at the XY plane and the compass below so that you can have a clear orientation of Thor as he moves within the boundary conditions.**
 
 .. image:: GameInfo.jpg
 
@@ -68,15 +68,15 @@ Variables
 ----------
 The directions below are the variables used to output the direction in which you want Thor to go at the end of each game turn.Each movement makes Thor move by 1 cell the direction chosen
 
-*       N (North) 
-*       NE (North East) 
+*       N (North)
+*       NE (North East)
 *       E (East)
-*       SE (South East) 
+*       SE (South East)
 *       S (South)
-*       SW (South West) 
+*       SW (South West)
 *       W (West)
 *       NW (North West)
- 
+
 Thor's Movement
 ----------------
 .. image:: XYgraph.jpg
@@ -100,14 +100,14 @@ Thor's Movement
             cout << "E" << endl;
             initial_thor_x++;
             }
-    /* 
+    /*
         Thor will travel N (North) since the light of power is above his location and it is in the positive direction .The light_y is the position of the light of power and initial_thor_y is Thor's starting position in the Y-coordinate plane. X does not change here because thor is moving in the Y direction.
         */
         else if (light_y < initial_thor_y) {
             cout << "N" << endl;
             initial_thor_y--;
             }
-    /* 
+    /*
         Based on the if statement for the South East direction, a comparison is made testing whether my y-value and x-value of the light power is greater than Thor's position, based on that outcome the code will go through the else-if statements.If both conditions apply, then SW would be the direction that Thor will move and this is the reason for the one variable increment.He will travel diagional because of the increment then straight.
         */
         else if (light_y > initial_thor_y) {
@@ -120,7 +120,5 @@ Thor's Movement
             cout << "W" << endl;
             }
     }
-} 
+}
 // **ending bracket**
-
-
